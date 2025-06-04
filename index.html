@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swedish Practice</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>📘 Swedish-English Flashcards App</h1>
+      <div class="filter-group">
+        <select id="letterFilter">
+          <option value="">Filter by Letter</option>
+        </select>
+        <select id="categoryFilter">
+          <option value="">Filter by Category</option>
+          <option value="Noun">Noun</option>
+          <option value="Verb">Verb</option>
+          <option value="Adjective">Adjective</option>
+          <option value="Conjunction">Conjunction</option>
+          <option value="Phrase">Phrase</option>
+        </select>
+      </div>
+
+      <div id="flashcard" class="flashcard">Click to Reveal</div>
+      <div id="cardCounter"></div>
+      <div id="progressContainer">
+        <div id="progressBar"></div>
+      </div>
+      <div id="percentageLabel"></div>
+
+      <div class="controls">
+        <button id="prevCard">Previous</button>
+        <button id="playAudio">🔊</button>
+        <button id="nextCard">Next</button>
+        <button id="resetCards">Reset</button>
+        <button id="shuffleCards">🔀 Shuffle</button>
+      </div>
+
+      <div
+        class="input-group"
+        style="background-color: aliceblue; padding: 0.5rem"
+      >
+        <input type="text" id="wordInput" placeholder="Swedish word" />
+        <input type="text" id="meaningInput" placeholder="English meaning" />
+        <button id="addCard">Add</button>
+      </div>
+
+      <button id="toggleVocabTable">📚 Show / Hide All Vocabulary</button>
+      <button id="downloadPDF">📄 Download PDF</button>
+
+      <div id="vocabTableContainer">
+        <table id="vocabTable">
+          <thead>
+            <tr>
+              <th>Swedish</th>
+              <th>English</th>
+              <th>Category</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <br /><br />
+      <details
+        style="
+          margin: 20px 0;
+          border: 1px solid #ccc;
+          padding: 1rem;
+          border-radius: 8px;
+        "
+      >
+        <summary style="font-weight: bold; font-size: 1.1rem; cursor: pointer">
+          📚 View Available Chapters
+        </summary>
+        <div style="margin-top: 1rem">
+          <button onclick="switchChapter(1)">
+            📘 Chapter 1 – You can speak Swedish!</button
+          ><br /><br />
+          <button onclick="switchChapter(2)">
+            📙 Chapter 2 – In the Classroom
+          </button>
+        </div>
+      </details>
+
+      <div id="chapterChecklistContainer"></div>
+      <div id="chapter-notes" style="margin-top: 20px"></div>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <p>© 2025 <strong>Anisul Islam</strong>. All rights reserved.</p>
+          <div class="social-icons">
+            <a
+              href="https://github.com/anisul-Islam"
+              target="_blank"
+              title="GitHub"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+            <a
+              href="https://www.youtube.com/@anisulislam"
+              target="_blank"
+              title="YouTube"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
