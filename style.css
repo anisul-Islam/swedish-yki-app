@@ -115,10 +115,24 @@ button:hover {
   color: white;
 }
 
-table {
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.phrase-table {
+  width: 100%;
+  min-width: 400px;
+  border-collapse: collapse;
+}
+
+.phrase-table th,
+.phrase-table td {
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ccc;
   text-align: left;
+  white-space: nowrap;
 }
 
 #progressContainer {

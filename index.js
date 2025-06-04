@@ -197,6 +197,7 @@ const chaptersInfo = [
         </ul>
 
         <h3>💬 Useful Phrases</h3>
+       <div class="table-container">
         <table class="phrase-table">
           <tr><th>Swedish</th><th>English</th></tr>
           <tr><td><strong>Vad heter jag/du/han/hon/vi/ni/de?</strong><br>Jag/du/han/hon/vi/ni/de heter...</td><td>What is my/your/his/her/our/your/their name?<br>My/Your/His/Her/Our/Your/Their name is...</td></tr>
@@ -208,9 +209,11 @@ const chaptersInfo = [
           <tr><td><strong>Jag söker jobb.</strong></td><td>I’m looking for a job.</td></tr>
           <tr><td><strong>Jag är pensionär.</strong></td><td>I am retired.</td></tr>
         </table>
+       </div>
 
-        <h3>🌐 Common Languages in Swedish</h3>
-        <table class="phrase-table">
+       <h3>🌐 Common Languages in Swedish</h3>
+       <div class="table-container">
+   <table class="phrase-table">
           <tr><th>Swedish</th><th>English</th></tr>
           <tr><td>svenska</td><td>Swedish</td></tr>
           <tr><td>engelska</td><td>English</td></tr>
@@ -226,9 +229,13 @@ const chaptersInfo = [
           <tr><td>kinesiska</td><td>Chinese</td></tr>
           <tr><td>japanska</td><td>Japanese</td></tr>
         </table>
+</div>
+
+        
+       
 
         <h3>👩‍⚕️ Occupation Vocabulary</h3>
-        <table class="phrase-table">
+        <div class="table-container"> <table class="phrase-table">
           <tr><th>Swedish</th><th>English</th></tr>
           <tr><td>ingenjör</td><td>engineer</td></tr>
           <tr><td>läkare</td><td>doctor</td></tr>
@@ -243,7 +250,8 @@ const chaptersInfo = [
           <tr><td>fotograf</td><td>photographer</td></tr>
           <tr><td>lärare</td><td>teacher</td></tr>
         </table>
-
+ </div>
+        
         <h3>✅ Checklist</h3>
         <ul class="checklist">
           <li><label><input type="checkbox"> Introduce yourself and ask others’ names</label></li>
