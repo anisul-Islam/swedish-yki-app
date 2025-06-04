@@ -11,16 +11,18 @@ body {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: auto;
   background: #fff;
   border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   color: #2c3e50;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
 }
 
 .flashcard {
@@ -44,7 +46,7 @@ h1 {
 button {
   padding: 10px 18px;
   margin: 8px;
-  font-size: clamp(14px, 2vw, 16px);
+  font-size: clamp(14px, 1.5vw, 16px);
   border: none;
   background: #3498db;
   color: white;
@@ -176,13 +178,14 @@ details button:hover {
    Footer
 ================================ */
 .footer {
-  background-color: var(--footer, #222);
-  color: var(--text, #fff);
+  background-color: #222;
+  color: #fff;
   padding: 20px 0;
   border-top: 1px solid #333;
   font-size: 14px;
   width: 100%;
 }
+
 .footer-content {
   display: flex;
   justify-content: space-between;
@@ -192,20 +195,24 @@ details button:hover {
   padding: 0 20px;
   flex-wrap: wrap;
 }
+
 .footer-content p {
   margin: 0;
 }
+
 .social-icons {
   display: flex;
   gap: 15px;
 }
+
 .social-icons a {
-  color: var(--text, #fff);
+  color: #fff;
   font-size: 20px;
   transition: color 0.3s ease, transform 0.3s ease;
 }
+
 .social-icons a:hover {
-  color: var(--highlight, #f39c12);
+  color: #f39c12;
   transform: scale(1.2);
 }
 
@@ -215,7 +222,13 @@ details button:hover {
 @media screen and (max-width: 600px) {
   body {
     font-size: 0.9rem;
+    padding: 10px;
   }
+
+  .container {
+    padding: 15px;
+  }
+
   .input-group input {
     width: 90%;
   }
