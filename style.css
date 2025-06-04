@@ -213,6 +213,9 @@ details button:hover {
    Responsive Design
 ================================ */
 @media screen and (max-width: 600px) {
+  body {
+    font-size: 0.9rem;
+  }
   .input-group input {
     width: 90%;
   }
