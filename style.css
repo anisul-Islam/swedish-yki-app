@@ -16,9 +16,9 @@ body {
   text-align: center;
 }
 
-
 .container {
   max-width: 1000px;
+  width: 100%;
   margin: auto;
   background: #fff;
   border-radius: 12px;
@@ -30,6 +30,19 @@ h1 {
   color: #2c3e50;
   font-size: 2.2rem;
   margin-bottom: 20px;
+}
+
+select,
+input,
+button {
+  max-width: 100%;
+}
+
+table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .flashcard {
@@ -197,6 +210,15 @@ button:hover {
   margin-bottom: 8px;
 }
 
+details {
+  width: 100%;
+}
+
+details button {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
 details button:hover {
   background: #2980b9;
 }
@@ -246,6 +268,30 @@ details button:hover {
 /* ================================
    Responsive Design
 ================================ */
+@media screen and (max-width: 991px) {
+  .container {
+    padding: 20px;
+  }
+
+  .flashcard {
+    font-size: 24px;
+    padding: 40px 15px;
+  }
+
+  .input-group input {
+    width: 80%;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+
+  .filter-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   body {
     font-size: 0.9rem;
