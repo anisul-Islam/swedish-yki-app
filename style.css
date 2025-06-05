@@ -39,7 +39,7 @@ body.dark-mode .container {
 }
 
 h1 {
-  color: #2c3e50;
+  /* color: #2c3e50; */
   font-size: 2.2rem;
   margin-bottom: 20px;
 }
@@ -74,6 +74,15 @@ select {
 hr {
   border-color: #ccc;
 }
+
+ /* Light mode background gradient */
+body {
+  background: linear-gradient(to right, #fdfbfb, #ebedee);
+}
+/* Dark mode background gradient */
+body.dark-mode {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+} 
 
 /* 📋 Inputs and Selects in Dark Mode */
 body.dark-mode input,
@@ -201,7 +210,7 @@ body.dark-mode button:hover {
   background: white;
 }
 
-body.dark-mode #vocabTable{
+body.dark-mode #vocabTable {
   background: #2b2b2b;
 }
 
@@ -324,8 +333,6 @@ details button:hover {
 }
 
 .footer {
-  background-color: #222;
-  color: #fff;
   padding: 20px 0;
   border-top: 1px solid #333;
   font-size: 14px;
@@ -333,7 +340,6 @@ details button:hover {
 }
 
 body.dark-mode .footer {
-  background-color: #111;
   border-top: 1px solid #333;
 }
 
@@ -357,7 +363,12 @@ body.dark-mode .footer {
 }
 
 .social-icons a {
-  color: #fff;
+  color: black;
+  font-size: 20px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+body.dark-mode .social-icons a {
+  color: white;
   font-size: 20px;
   transition: color 0.3s ease, transform 0.3s ease;
 }
