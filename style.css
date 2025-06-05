@@ -75,14 +75,14 @@ hr {
   border-color: #ccc;
 }
 
- /* Light mode background gradient */
+/* Light mode background gradient */
 body {
   background: linear-gradient(to right, #fdfbfb, #ebedee);
 }
 /* Dark mode background gradient */
 body.dark-mode {
   background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-} 
+}
 
 /* 📋 Inputs and Selects in Dark Mode */
 body.dark-mode input,
@@ -332,11 +332,13 @@ details button:hover {
   background: #2980b9;
 }
 
+/* Footer Styles */
 .footer {
   padding: 20px 0;
   border-top: 1px solid #333;
   font-size: 14px;
   width: 100%;
+  background: transparent;
 }
 
 body.dark-mode .footer {
@@ -345,31 +347,34 @@ body.dark-mode .footer {
 
 .footer-content {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
   flex-wrap: wrap;
+  gap: 20px;
+  text-align: center;
 }
 
-.support-qr {
-  text-align: center;
-  margin-top: 10px;
+.footer-section {
+  flex: 1;
+  min-width: 200px;
 }
 
 .support-qr p {
-  /* margin: 5px 0; */
   font-size: 14px;
+  margin-bottom: 5px;
+  color: #444;
 }
 
 .support-qr img {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 8px;
   border: 2px solid #444;
   background: #fff;
-  /* padding: 6px; */
+  padding: 6px;
   transition: transform 0.2s ease;
 }
 
@@ -387,25 +392,20 @@ body.dark-mode .support-qr img {
   border-color: #555;
 }
 
-
-.footer-content p {
-  margin: 0;
-}
-
 .social-icons {
   display: flex;
   gap: 15px;
+  justify-content: center;
 }
 
 .social-icons a {
-  color: black;
+  color: #333;
   font-size: 20px;
   transition: color 0.3s ease, transform 0.3s ease;
 }
+
 body.dark-mode .social-icons a {
   color: white;
-  font-size: 20px;
-  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-icons a:hover {
@@ -445,6 +445,16 @@ body.dark-mode .social-icons a {
   #vocabTable {
     table-layout: auto;
     min-width: 600px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .footer-section {
+    text-align: center;
   }
 }
 

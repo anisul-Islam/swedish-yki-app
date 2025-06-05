@@ -23,7 +23,8 @@ export const chapter1Content = `
     <li>Pronunciation Tips: 'g' is often soft or silent (e.g., <em>dag</em> → <em>da</em>), and 'r' is lightly rolled (e.g., <em>röd</em>, <em>Sverige</em>)</li>
   </ul>
 <br/><br/>
-  <h3>Swedish Vowel Length Rules</h3>
+
+<h3>Swedish Vowel Length Rules</h3>
   <p>Rule: A vowel (AEIOUYÅÄÖ) is <em>long</em> if followed by one consonant; <em>short</em> if followed by two or more.</p>
   <ul>
     <li>tak (roof) – long 'a'</li>
@@ -44,22 +45,29 @@ export const chapter1Content = `
     <li>z → sounds like 's' — <em>zon</em> → son, <em>zebra</em> → sebra</li>
   </ul>
 <br/><br/>
-  <h3>💬 Useful Phrases</h3>
+
+<h3>📇 Swedish Pronouns</h3>
   <div class="table-container">
     <table class="phrase-table">
-      <tr><th>Swedish</th><th>English</th></tr>
-      <tr><td>Vad heter jag/du/han/hon/vi/ni/de?<br>Jag/du/han/hon/vi/ni/de heter...</td><td>What is my/your/his/her/our/your/their name?<br>My/Your/His/Her/Our/Your/Their name is...</td></tr>
-      <tr><td>Varifrån kommer jag/du/han/hon/vi/ni/de?<br>Jag/du/han/hon/vi/ni/de kommer från...</td><td>Where am I/are you/is he/she/are we/are you/are they from?<br>I/You/He/She/We/You/They come from...</td></tr>
-      <tr><td>Vad talar jag/du/han/hon/vi/ni/de för språk?<br>Jag/du/han/hon/vi/ni/de talar...</td><td>What language(s) do I/you/he/she/we/you/they speak?<br>I/You/He/She/We/You/They speak...</td></tr>
-      <tr><td>Arbetar du här?</td><td>Do you work here?</td></tr>
-      <tr><td>Jag arbetar inte här.</td><td>I don’t work here.</td></tr>
-      <tr><td>Vad gör du?</td><td>What do you do?</td></tr>
-      <tr><td>Jag söker jobb.</td><td>I’m looking for a job.</td></tr>
-      <tr><td>Jag är pensionär.</td><td>I am retired.</td></tr>
+      <thead>
+        <tr><th>Swedish</th><th>English</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>jag</td><td>I</td></tr>
+        <tr><td>du</td><td>you (singular)</td></tr>
+        <tr><td>han</td><td>he</td></tr>
+        <tr><td>hon</td><td>she</td></tr>
+        <tr><td>vi</td><td>we</td></tr>
+        <tr><td>ni</td><td>you (plural)</td></tr>
+        <tr><td>de</td><td>they</td></tr>
+      </tbody>
     </table>
   </div>
 <br/><br/>
-  <h3>🌐 Common Languages in Swedish</h3>
+
+
+
+ <h3>🌐 Common Languages in Swedish</h3>
   <div class="table-container">
     <table class="phrase-table">
       <tr><th>Swedish</th><th>English</th></tr>
@@ -79,6 +87,47 @@ export const chapter1Content = `
     </table>
   </div>
 <br/><br/>
+
+  <h3>👷‍♀️ Common Professions</h3>
+  <div class="table-container">
+    <table class="phrase-table">
+      <thead>
+        <tr><th>Swedish</th><th>English</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>lärare</td><td>teacher</td></tr>
+        <tr><td>läkare</td><td>doctor</td></tr>
+        <tr><td>ingenjör</td><td>engineer</td></tr>
+        <tr><td>sjuksköterska</td><td>nurse</td></tr>
+        <tr><td>polis</td><td>police officer</td></tr>
+        <tr><td>student</td><td>student</td></tr>
+        <tr><td>arbetare</td><td>worker</td></tr>
+        <tr><td>programmerare</td><td>programmer</td></tr>
+        <tr><td>webbdesigner</td><td>web designer</td></tr>
+        <tr><td>chaufför</td><td>driver</td></tr>
+        <tr><td>kock</td><td>cook</td></tr>
+      
+      </tbody>
+    </table>
+  </div>
+<br/><br/>
+
+  <h3>💬 Useful Phrases</h3>
+  <div class="table-container">
+    <table class="phrase-table">
+      <tr><th>Swedish</th><th>English</th></tr>
+      <tr><td>Vad heter jag/du/han/hon/vi/ni/de?<br>Jag/du/han/hon/vi/ni/de heter...</td><td>What is my/your/his/her/our/your/their name?<br>My/Your/His/Her/Our/Your/Their name is...</td></tr>
+      <tr><td>Varifrån kommer jag/du/han/hon/vi/ni/de?<br>Jag/du/han/hon/vi/ni/de kommer från...</td><td>Where am I/are you/is he/she/are we/are you/are they from?<br>I/You/He/She/We/You/They come from...</td></tr>
+      <tr><td>Vad talar jag/du/han/hon/vi/ni/de för språk?<br>Jag/du/han/hon/vi/ni/de talar...</td><td>What language(s) do I/you/he/she/we/you/they speak?<br>I/You/He/She/We/You/They speak...</td></tr>
+      <tr><td>Arbetar du här?</td><td>Do you work here?</td></tr>
+      <tr><td>Jag arbetar inte här.</td><td>I don’t work here.</td></tr>
+      <tr><td>Vad gör du?</td><td>What do you do?</td></tr>
+      <tr><td>Jag söker jobb.</td><td>I’m looking for a job.</td></tr>
+      <tr><td>Jag är pensionär.</td><td>I am retired.</td></tr>
+    </table>
+  </div>
+<br/><br/>
+ 
   <h3>🚫 Negation Practice with "inte"</h3>
    <p style="margin-top: 1rem;"><em>💡 Tip: The word "inte" usually comes after the verb.</em></p>
   <div class="table-container">
