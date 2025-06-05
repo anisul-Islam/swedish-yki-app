@@ -1,9 +1,93 @@
-//@ts-nocheck
+// @ts-nocheck
 import { chapter1Content } from './chapters/chapter1.js';
 import { chapter2Content } from './chapters/chapter2.js';
 import { vocabulary } from './vocabulary.js';
 
 const chaptersInfo = [chapter1Content, chapter2Content];
+
+// Separated Swedish alphabet list
+const swedishAlphabet = [
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'I',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z',
+  'Å',
+  'Ä',
+  'Ö',
+];
+
+const swedishAlphabetBtn = document.getElementById('swedishAlphabet');
+swedishAlphabetBtn?.addEventListener('click', toggleSwedishAlphabet);
+
+let isAlphabetVisible = false;
+
+function toggleSwedishAlphabet() {
+  const target = document.getElementById('alphabetDisplay');
+  if (!target) return;
+  if (isAlphabetVisible) {
+    target.innerHTML = '';
+    isAlphabetVisible = false;
+    return;
+  }
+
+  const container = document.createElement('div');
+  container.style.margin = '20px auto';
+  container.style.maxWidth = '600px';
+  container.style.display = 'flex';
+  container.style.flexWrap = 'wrap';
+  container.style.justifyContent = 'center';
+  container.style.gap = '10px';
+
+  swedishAlphabet.forEach((letter) => {
+    const btn = document.createElement('button');
+    btn.textContent = letter;
+    btn.onclick = () => speakSwedish(letter);
+    container.appendChild(btn);
+  });
+
+  target.innerHTML = '';
+  target.appendChild(container);
+  isAlphabetVisible = true;
+}
+
+// Group and deduplicate words by letter and category (case-insensitive)
+const allLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ'.split('');
+const groupedByLetter = {};
+const groupedByCategory = {};
+
+vocabulary.forEach((entry) => {
+  const word = entry.word.trim();
+  const firstLetter = word[0].toLocaleUpperCase('sv-SE');
+  const category = entry.category.trim().toLowerCase();
+
+  if (!groupedByLetter[firstLetter]) groupedByLetter[firstLetter] = [];
+  groupedByLetter[firstLetter].push(entry);
+
+  if (!groupedByCategory[category]) groupedByCategory[category] = [];
+  groupedByCategory[category].push(entry);
+});
 
 let currentIndex = 0;
 let showingWord = true;
@@ -23,16 +107,15 @@ function speakSwedish(text) {
 }
 
 function populateLetterFilter() {
-  const letters = [
-    ...new Set(vocabulary.map((v) => v.word[0].toUpperCase())),
-  ].sort();
-  letters.forEach((letter) => {
+  allLetters.forEach((letter) => {
     const option = document.createElement('option');
     option.value = letter;
     option.textContent = letter;
-    letterFilter.appendChild(option);
+    letterFilter?.appendChild(option);
   });
 }
+
+// (rest of the unchanged code follows...)
 
 function showCard() {
   if (!filteredVocabulary.length) {
@@ -195,6 +278,7 @@ function renderChapterInfo(chapter = 1) {
     container.style.display = 'block';
   }
 }
+
 function switchChapter(chapterNumber) {
   const chapter = parseInt(chapterNumber, 10);
   renderChapterInfo(chapter);
