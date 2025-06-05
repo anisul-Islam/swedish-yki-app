@@ -73,20 +73,44 @@ function toggleSwedishAlphabet() {
 }
 
 // Group and deduplicate words by letter and category (case-insensitive)
-const allLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ'.split('');
+const allLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const groupedByLetter = {};
 const groupedByCategory = {};
+
+// List of profession keywords
+const professionKeywords = [
+  'advokat',
+  'läkare',
+  'ingenjör',
+  'lärare',
+  'busschaufför',
+  'fotograf',
+  'servitör',
+  'kock',
+  'sjuksköterska',
+  'tandläkare',
+  'webbdesigner',
+  'frisör',
+];
 
 vocabulary.forEach((entry) => {
   const word = entry.word.trim();
   const firstLetter = word[0].toLocaleUpperCase('sv-SE');
-  const category = entry.category.trim().toLowerCase();
+  const lowerWord = word.toLowerCase();
+  const originalCategory = entry.category.trim();
+
+  const newCategory =
+    originalCategory.toLowerCase() === 'noun' &&
+    professionKeywords.includes(lowerWord)
+      ? 'Profession'
+      : originalCategory;
 
   if (!groupedByLetter[firstLetter]) groupedByLetter[firstLetter] = [];
-  groupedByLetter[firstLetter].push(entry);
+  groupedByLetter[firstLetter].push({ ...entry, category: newCategory });
 
-  if (!groupedByCategory[category]) groupedByCategory[category] = [];
-  groupedByCategory[category].push(entry);
+  const lowerCategory = newCategory.toLowerCase();
+  if (!groupedByCategory[lowerCategory]) groupedByCategory[lowerCategory] = [];
+  groupedByCategory[lowerCategory].push({ ...entry, category: newCategory });
 });
 
 let currentIndex = 0;
@@ -106,6 +130,12 @@ function speakSwedish(text) {
   speechSynthesis.speak(utterance);
 }
 
+function speakEnglish(text) {
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'en-US';
+  speechSynthesis.speak(utterance);
+}
+
 function populateLetterFilter() {
   allLetters.forEach((letter) => {
     const option = document.createElement('option');
@@ -114,8 +144,6 @@ function populateLetterFilter() {
     letterFilter?.appendChild(option);
   });
 }
-
-// (rest of the unchanged code follows...)
 
 function showCard() {
   if (!filteredVocabulary.length) {
@@ -142,6 +170,17 @@ function toggleCard() {
     : filteredVocabulary[currentIndex].meaning;
 }
 
+function playAudio() {
+  if (!filteredVocabulary.length) return;
+  if (showingWord) {
+    speakSwedish(filteredVocabulary[currentIndex].word);
+  } else {
+    speakEnglish(filteredVocabulary[currentIndex].meaning);
+  }
+}
+
+window.playAudio = playAudio;
+
 function nextCard() {
   if (!filteredVocabulary.length) return;
   currentIndex = (currentIndex + 1) % filteredVocabulary.length;
@@ -153,11 +192,6 @@ function prevCard() {
   currentIndex =
     (currentIndex - 1 + filteredVocabulary.length) % filteredVocabulary.length;
   showCard();
-}
-
-function playAudio() {
-  if (!filteredVocabulary.length) return;
-  speakSwedish(filteredVocabulary[currentIndex].word);
 }
 
 function addCard() {
