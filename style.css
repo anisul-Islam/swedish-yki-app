@@ -345,13 +345,48 @@ body.dark-mode .footer {
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
   flex-wrap: wrap;
 }
+
+.support-qr {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.support-qr p {
+  /* margin: 5px 0; */
+  font-size: 14px;
+}
+
+.support-qr img {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  border: 2px solid #444;
+  background: #fff;
+  /* padding: 6px; */
+  transition: transform 0.2s ease;
+}
+
+.support-qr img:hover {
+  transform: scale(1.05);
+  border-color: #3498db;
+}
+
+body.dark-mode .support-qr p {
+  color: #ccc;
+}
+
+body.dark-mode .support-qr img {
+  background: #1e1e1e;
+  border-color: #555;
+}
+
 
 .footer-content p {
   margin: 0;
