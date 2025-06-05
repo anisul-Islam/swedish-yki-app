@@ -3,6 +3,11 @@ import { chapter1Content } from './chapters/chapter1.js';
 import { chapter2Content } from './chapters/chapter2.js';
 import { vocabulary } from './vocabulary.js';
 
+const toggleDarkModeBtn = document.getElementById('toggleDarkMode');
+toggleDarkModeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+});
+
 // Store chapter info content
 const chaptersInfo = [chapter1Content, chapter2Content];
 
@@ -210,7 +215,6 @@ function toggleVocabTable() {
   if (isHidden) {
     vocabulary.forEach((entry, i) => {
       const row = document.createElement('tr');
-      row.style.backgroundColor = i % 2 === 0 ? '#ffffff' : '#f0f0f0';
       row.innerHTML = `
         <td>${entry.word} <button class="speak-btn" data-word="${entry.word}" title="Play Audio">🔊</button></td>
         <td>${entry.meaning}</td>

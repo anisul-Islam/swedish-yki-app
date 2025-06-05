@@ -19,6 +19,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   </head>
   <body>
+    <!-- 🌙 Toggle dark mode button -->
+    <button id="toggleDarkMode">🌓 Toggle Dark Mode</button>
+
     <div class="container">
       <h1>📘 Swedish-English Flashcards App</h1>
       <div class="filter-group">
@@ -51,10 +54,7 @@
       </div>
       <br>
 
-      <div
-        class="input-group"
-        style="background-color: aliceblue; padding: 0.5rem"
-      >
+      <div class="input-group">
         <input type="text" id="wordInput" placeholder="Swedish word" />
         <input type="text" id="meaningInput" placeholder="English meaning" />
         <button id="addCard">Add</button>
@@ -64,7 +64,6 @@
 
       <button id="toggleVocabTable">📚 Show / Hide All Vocabulary</button>
       <button id="downloadPDF">📄 Download PDF</button>
-
       <button id="swedishAlphabet">🔤 Show / Hide Swedish Alphabet</button>
       <div id="alphabetDisplay" style="margin-top: 20px"></div>
 
@@ -81,17 +80,8 @@
         </table>
       </div>
       <br /><br />
-      <details
-        style="
-          margin: 20px 0;
-          border: 1px solid #ccc;
-          padding: 1rem;
-          border-radius: 8px;
-        "
-      >
-        <summary style="font-weight: bold; font-size: 1.1rem; cursor: pointer">
-          📚 View Available Chapters
-        </summary>
+      <details style="margin: 20px 0; border: 1px solid #ccc; padding: 1rem; border-radius: 8px;">
+        <summary style="font-weight: bold; font-size: 1.1rem; cursor: pointer">📚 View Available Chapters</summary>
         <div style="margin-top: 1rem">
           <button data-chapter="1">📘 Chapter 1</button>
           <br />
@@ -106,18 +96,10 @@
         <div class="footer-content">
           <p>© 2025 <strong>Anisul Islam</strong>. All rights reserved.</p>
           <div class="social-icons">
-            <a
-              href="https://github.com/anisul-Islam"
-              target="_blank"
-              title="GitHub"
-            >
+            <a href="https://github.com/anisul-Islam" target="_blank" title="GitHub">
               <i class="fab fa-github"></i>
             </a>
-            <a
-              href="https://www.youtube.com/@anisul-islam"
-              target="_blank"
-              title="YouTube"
-            >
+            <a href="https://www.youtube.com/@anisul-islam" target="_blank" title="YouTube">
               <i class="fab fa-youtube"></i>
             </a>
           </div>
