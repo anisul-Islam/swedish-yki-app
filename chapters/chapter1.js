@@ -26,6 +26,28 @@ export const chapter1Content = `
         </ul>
          <br><br/>
 
+        <h3>Swedish Vowel Length Rules</h3>
+      <p><strong>Rule:</strong> A vowel (AEIOUYÅÄÖ) is <em>long</em> if followed by one consonant; <em>short</em> if followed by two or more.</p>
+      <ul>
+      <li><strong>tak</strong> (roof) – long 'a'</li>
+      <li><strong>tack</strong> (thanks) – short 'a'</li>
+      <li><strong>vit</strong> (white) – long 'i'</li>
+      <li><strong>vitt</strong> (white - neuter) – short 'i'</li>
+      <li><strong>glas</strong> (glass) – long 'a'</li>
+      <li><strong>klass</strong> (class) – short 'a'</li>
+      </ul> 
+      <br><br/>
+
+       <h3>Consonant + Vowel Pronunciation Rules</h3>
+  <p>Certain consonants change pronunciation when followed by front vowels (e, i, y, ä, ö):</p>
+  <ul>
+    <li><strong>g + front vowel</strong> → sounds like 'y'<br>Examples: <em>giraff</em> → yiraff, <em>geni</em> → yeni</li>
+    <li><strong>k + front vowel</strong> → sounds like 'sh'<br>Examples: <em>kille</em> → shille, <em>kemi</em> → shemi</li>
+    <li><strong>tj</strong> → sounds like 'sh'<br>Examples: <em>tjej</em> → shey, <em>tjugo</em> → shoogo</li>
+    <li><strong>-tion</strong> → sounds like 'khun' (not "shon")<br>Examples: <em>lektion</em> → lekhun, <em>station</em> → stakhun</li>
+     <li><strong>z</strong> → sounds like 's'<br>Examples: <em>zon</em> → son, <em>zebra</em> → sebra</li>
+  </ul>
+
         <h3>💬 Useful Phrases</h3>
        <div class="table-container">
         <table class="phrase-table">

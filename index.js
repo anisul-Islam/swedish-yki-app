@@ -3,49 +3,62 @@ import { chapter1Content } from './chapters/chapter1.js';
 import { chapter2Content } from './chapters/chapter2.js';
 import { vocabulary } from './vocabulary.js';
 
+// Store chapter info content
 const chaptersInfo = [chapter1Content, chapter2Content];
 
-// Separated Swedish alphabet list
-const swedishAlphabet = [
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-  'F',
-  'G',
-  'H',
-  'I',
-  'J',
-  'K',
-  'L',
-  'M',
-  'N',
-  'O',
-  'P',
-  'Q',
-  'R',
-  'S',
-  'T',
-  'U',
-  'V',
-  'W',
-  'X',
-  'Y',
-  'Z',
-  'Å',
-  'Ä',
-  'Ö',
-];
+// Swedish alphabet for pronunciation buttons
+const swedishAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ'.split('');
 
-const swedishAlphabetBtn = document.getElementById('swedishAlphabet');
-swedishAlphabetBtn?.addEventListener('click', toggleSwedishAlphabet);
-
+let currentIndex = 0;
+let showingWord = true;
+let filteredVocabulary = [...vocabulary];
 let isAlphabetVisible = false;
+let currentVisibleChapter = null;
 
+// DOM Elements
+const flashcard = document.getElementById('flashcard');
+const letterFilter = document.getElementById('letterFilter');
+const categoryFilter = document.getElementById('categoryFilter');
+const chapterSelect = document.getElementById('chapterSelect');
+const vocabTableContainer = document.getElementById('vocabTableContainer');
+const vocabTableBody = document.querySelector('#vocabTable tbody');
+const swedishAlphabetBtn = document.getElementById('swedishAlphabet');
+const chapterContainer = document.getElementById('chapter-notes');
+const chapterButtons = document.querySelectorAll('[data-chapter]');
+
+// 🗣 Speak Swedish text
+function speakSwedish(text) {
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'sv-SE';
+  speechSynthesis.speak(utterance);
+}
+
+// 🗣 Speak English text
+function speakEnglish(text) {
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'en-US';
+  speechSynthesis.speak(utterance);
+}
+
+// 🔤 Populate alphabet filter
+function populateLetterFilter() {
+  letterFilter.innerHTML = '<option value="">Filter by Letter</option>';
+  swedishAlphabet.forEach((letter) => {
+    const option = document.createElement('option');
+    option.value = letter;
+    option.textContent = letter;
+    letterFilter.appendChild(option);
+  });
+}
+
+// 🔤 Toggle Swedish alphabet grid
 function toggleSwedishAlphabet() {
   const target = document.getElementById('alphabetDisplay');
   if (!target) return;
+
+  // Always hide vocabulary section when showing alphabet
+  vocabTableContainer.style.display = 'none';
+
   if (isAlphabetVisible) {
     target.innerHTML = '';
     isAlphabetVisible = false;
@@ -53,98 +66,20 @@ function toggleSwedishAlphabet() {
   }
 
   const container = document.createElement('div');
-  container.style.margin = '20px auto';
-  container.style.maxWidth = '600px';
-  container.style.display = 'flex';
-  container.style.flexWrap = 'wrap';
-  container.style.justifyContent = 'center';
-  container.style.gap = '10px';
-
+  container.style.cssText =
+    'margin: 20px auto; max-width: 600px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;';
   swedishAlphabet.forEach((letter) => {
     const btn = document.createElement('button');
     btn.textContent = letter;
     btn.onclick = () => speakSwedish(letter);
     container.appendChild(btn);
   });
-
   target.innerHTML = '';
   target.appendChild(container);
   isAlphabetVisible = true;
 }
 
-// Group and deduplicate words by letter and category (case-insensitive)
-const allLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-const groupedByLetter = {};
-const groupedByCategory = {};
-
-// List of profession keywords
-const professionKeywords = [
-  'advokat',
-  'läkare',
-  'ingenjör',
-  'lärare',
-  'busschaufför',
-  'fotograf',
-  'servitör',
-  'kock',
-  'sjuksköterska',
-  'tandläkare',
-  'webbdesigner',
-  'frisör',
-];
-
-vocabulary.forEach((entry) => {
-  const word = entry.word.trim();
-  const firstLetter = word[0].toLocaleUpperCase('sv-SE');
-  const lowerWord = word.toLowerCase();
-  const originalCategory = entry.category.trim();
-
-  const newCategory =
-    originalCategory.toLowerCase() === 'noun' &&
-    professionKeywords.includes(lowerWord)
-      ? 'Profession'
-      : originalCategory;
-
-  if (!groupedByLetter[firstLetter]) groupedByLetter[firstLetter] = [];
-  groupedByLetter[firstLetter].push({ ...entry, category: newCategory });
-
-  const lowerCategory = newCategory.toLowerCase();
-  if (!groupedByCategory[lowerCategory]) groupedByCategory[lowerCategory] = [];
-  groupedByCategory[lowerCategory].push({ ...entry, category: newCategory });
-});
-
-let currentIndex = 0;
-let showingWord = true;
-let filteredVocabulary = [...vocabulary];
-
-const flashcard = document.getElementById('flashcard');
-const letterFilter = document.getElementById('letterFilter');
-const categoryFilter = document.getElementById('categoryFilter');
-const chapterSelect = document.getElementById('chapterSelect');
-const vocabTableContainer = document.getElementById('vocabTableContainer');
-const vocabTableBody = document.querySelector('#vocabTable tbody');
-
-function speakSwedish(text) {
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'sv-SE';
-  speechSynthesis.speak(utterance);
-}
-
-function speakEnglish(text) {
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'en-US';
-  speechSynthesis.speak(utterance);
-}
-
-function populateLetterFilter() {
-  allLetters.forEach((letter) => {
-    const option = document.createElement('option');
-    option.value = letter;
-    option.textContent = letter;
-    letterFilter?.appendChild(option);
-  });
-}
-
+// 🃏 Show current flashcard
 function showCard() {
   if (!filteredVocabulary.length) {
     flashcard.textContent = 'No cards found.';
@@ -162,31 +97,34 @@ function showCard() {
   )}% complete`;
 }
 
+// 🔁 Flip flashcard and speak
 function toggleCard() {
   if (!filteredVocabulary.length) return;
   showingWord = !showingWord;
-  flashcard.textContent = showingWord
+  const text = showingWord
     ? filteredVocabulary[currentIndex].word
     : filteredVocabulary[currentIndex].meaning;
+  flashcard.textContent = text;
+  showingWord ? speakSwedish(text) : speakEnglish(text);
 }
 
+// 🔊 Play current side audio
 function playAudio() {
   if (!filteredVocabulary.length) return;
-  if (showingWord) {
-    speakSwedish(filteredVocabulary[currentIndex].word);
-  } else {
-    speakEnglish(filteredVocabulary[currentIndex].meaning);
-  }
+  const text = showingWord
+    ? filteredVocabulary[currentIndex].word
+    : filteredVocabulary[currentIndex].meaning;
+  showingWord ? speakSwedish(text) : speakEnglish(text);
 }
 
-window.playAudio = playAudio;
-
+// ⏭ Next flashcard
 function nextCard() {
   if (!filteredVocabulary.length) return;
   currentIndex = (currentIndex + 1) % filteredVocabulary.length;
   showCard();
 }
 
+// ⏮ Previous flashcard
 function prevCard() {
   if (!filteredVocabulary.length) return;
   currentIndex =
@@ -194,41 +132,40 @@ function prevCard() {
   showCard();
 }
 
+// ➕ Add new vocabulary
 function addCard() {
   const word = document.getElementById('wordInput').value.trim();
   const meaning = document.getElementById('meaningInput').value.trim();
-  const category = 'Noun';
   if (word && meaning) {
-    vocabulary.push({ word, meaning, category });
+    vocabulary.push({ word, meaning, category: 'Noun' });
     localStorage.setItem('vocabulary', JSON.stringify(vocabulary));
     filteredVocabulary = [...vocabulary];
     document.getElementById('wordInput').value = '';
     document.getElementById('meaningInput').value = '';
-    alert('New word added!');
     populateLetterFilter();
     showCard();
+    alert('New word added!');
   } else {
     alert('Please enter both Swedish word and English meaning.');
   }
 }
 
+// 📥 Download vocabulary as PDF
 function downloadPDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
-  doc.setFontSize(16);
-  doc.text('Swedish to English Vocabulary', 20, 20);
-  doc.setFontSize(12);
-  doc.text(`Total Words: ${filteredVocabulary.length}`, 20, 30);
+  doc.setFontSize(16).text('Swedish to English Vocabulary', 20, 20);
+  doc.setFontSize(12).text(`Total Words: ${vocabulary.length}`, 20, 30);
   let y = 40;
-  filteredVocabulary
+  vocabulary
     .sort((a, b) => a.word.localeCompare(b.word, 'sv'))
-    .forEach((item, index) => {
+    .forEach((item, i) => {
       if (y > 280) {
         doc.addPage();
         y = 20;
       }
       doc.text(
-        `${index + 1}. ${item.word} – ${item.meaning} (${item.category})`,
+        `${i + 1}. ${item.word} – ${item.meaning} (${item.category})`,
         20,
         y
       );
@@ -237,14 +174,7 @@ function downloadPDF() {
   doc.save('swedish_english_vocabulary.pdf');
 }
 
-function resetCards() {
-  currentIndex = 0;
-  filteredVocabulary = [...vocabulary];
-  letterFilter.value = '';
-  categoryFilter.value = '';
-  showCard();
-}
-
+// 🔁 Shuffle flashcards
 function shuffleCards() {
   for (let i = filteredVocabulary.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -258,29 +188,41 @@ function shuffleCards() {
   alert('Cards shuffled!');
 }
 
+// 🧹 Reset filters and cards
+function resetCards() {
+  currentIndex = 0;
+  filteredVocabulary = [...vocabulary];
+  letterFilter.value = '';
+  categoryFilter.value = '';
+  showCard();
+}
+
+// 🗂 Show or hide vocabulary table
 function toggleVocabTable() {
-  if (
+  const alphabetDisplay = document.getElementById('alphabetDisplay');
+  if (!vocabTableContainer || !vocabTableBody) return;
+
+  // Always hide alphabet when showing vocabulary
+  alphabetDisplay.innerHTML = '';
+  isAlphabetVisible = false;
+
+  const isHidden =
     vocabTableContainer.style.display === 'none' ||
-    !vocabTableContainer.style.display
-  ) {
-    vocabTableBody.innerHTML = '';
-    filteredVocabulary.forEach((entry, index) => {
+    !vocabTableContainer.style.display;
+  vocabTableBody.innerHTML = '';
+  if (isHidden) {
+    vocabulary.forEach((entry, i) => {
       const row = document.createElement('tr');
-      row.style.backgroundColor = index % 2 === 0 ? '#ffffff' : '#f0f0f0';
+      row.style.backgroundColor = i % 2 === 0 ? '#ffffff' : '#f0f0f0';
       row.innerHTML = `
-        <td>
-          ${entry.word}
-          <button class="speak-btn" data-word="${entry.word}" title="Play Audio">🔊</button>
-        </td>
+        <td>${entry.word} <button class="speak-btn" data-word="${entry.word}" title="Play Audio">🔊</button></td>
         <td>${entry.meaning}</td>
         <td>${entry.category}</td>
       `;
       vocabTableBody.appendChild(row);
     });
     vocabTableBody.querySelectorAll('.speak-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        speakSwedish(btn.dataset.word);
-      });
+      btn.addEventListener('click', () => speakSwedish(btn.dataset.word));
     });
     vocabTableContainer.style.display = 'block';
   } else {
@@ -288,6 +230,7 @@ function toggleVocabTable() {
   }
 }
 
+// 🧠 Filter vocabulary
 function applyFilters(letter = '', category = '') {
   const selectedLetter = letter || letterFilter.value;
   const selectedCategory = category || categoryFilter.value;
@@ -304,6 +247,7 @@ function applyFilters(letter = '', category = '') {
   showCard();
 }
 
+// 📘 Render chapter notes
 function renderChapterInfo(chapter = 1) {
   const container = document.getElementById('chapter-notes');
   if (container) {
@@ -313,24 +257,24 @@ function renderChapterInfo(chapter = 1) {
   }
 }
 
+// 🔄 Switch visible chapter
 function switchChapter(chapterNumber) {
   const chapter = parseInt(chapterNumber, 10);
   renderChapterInfo(chapter);
 }
 
-// Make switchChapter available globally for inline HTML calls
-window.switchChapter = switchChapter;
-
-document.addEventListener('DOMContentLoaded', () => {
+// 📦 Setup listeners and init app
+window.addEventListener('DOMContentLoaded', () => {
   populateLetterFilter();
   showCard();
 
-  const chapterNotesContainer = document.getElementById('chapter-notes');
-  if (chapterNotesContainer) {
-    chapterNotesContainer.style.display = 'none';
-  }
+  document.getElementById('cardCounter').textContent = '';
+  document.getElementById('percentageLabel').textContent = '';
+  document.getElementById('progressBar').style.width = '0%';
 
-  if (flashcard) flashcard.addEventListener('click', toggleCard);
+  swedishAlphabetBtn?.addEventListener('click', toggleSwedishAlphabet);
+  flashcard?.addEventListener('click', toggleCard);
+
   document.getElementById('prevCard')?.addEventListener('click', prevCard);
   document.getElementById('nextCard')?.addEventListener('click', nextCard);
   document.getElementById('playAudio')?.addEventListener('click', playAudio);
@@ -345,9 +289,23 @@ document.addEventListener('DOMContentLoaded', () => {
   document
     .getElementById('downloadPDF')
     ?.addEventListener('click', downloadPDF);
+
   letterFilter?.addEventListener('change', () => applyFilters());
   categoryFilter?.addEventListener('change', () => applyFilters());
-  chapterSelect?.addEventListener('change', (e) =>
-    switchChapter(e.target.value)
-  );
+
+  chapterButtons.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      if (currentVisibleChapter === i) {
+        chapterContainer.style.display = 'none';
+        currentVisibleChapter = null;
+      } else {
+        renderChapterInfo(i + 1);
+        chapterContainer.style.display = 'block';
+        currentVisibleChapter = i;
+      }
+    });
+  });
+
+  // Hide chapter notes by default
+  if (chapterContainer) chapterContainer.style.display = 'none';
 });
