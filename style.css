@@ -107,38 +107,46 @@ button:hover {
   margin-bottom: 10px;
 }
 
+/* 🧾 Ensure vocab table section uses full parent width */
 #vocabTableContainer {
-  margin-top: 20px;
   display: none;
-  max-height: 300px;
+  width: 100%;
+  margin-top: 20px;
+  max-height: 400px;
   overflow-y: auto;
   overflow-x: auto;
   border: 1px solid #ccc;
   border-radius: 10px;
-  max-width: 100%;
+  background: white;
 }
 
+/* 📊 Stretch table to fill full container width */
 #vocabTable {
   width: 100%;
+  table-layout: auto;
   border-collapse: collapse;
+  min-width: 100%;
 }
 
 #vocabTable th,
 #vocabTable td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+  padding: 12px;
   text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
 }
 
-#vocabTable th {
-  background-color: #3498db;
-  color: white;
+/* 🧩 Ensure the first column with audio button is spaced well */
+#vocabTable td:first-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
+/* Optional: responsive container wrapper */
 .table-container {
   width: 100%;
   overflow-x: auto;
-  margin-top: 10px;
 }
 
 .phrase-table {
@@ -289,6 +297,18 @@ details button:hover {
   .filter-group {
     flex-direction: column;
     gap: 10px;
+  }
+}
+
+/* 📱 On small screens allow horizontal scroll for large content */
+@media screen and (max-width: 768px) {
+  #vocabTableContainer {
+    overflow-x: auto;
+  }
+
+  #vocabTable {
+    table-layout: auto;
+    min-width: 600px;
   }
 }
 

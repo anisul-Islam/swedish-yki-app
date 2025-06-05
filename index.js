@@ -25,6 +25,7 @@ const vocabTableBody = document.querySelector('#vocabTable tbody');
 const swedishAlphabetBtn = document.getElementById('swedishAlphabet');
 const chapterContainer = document.getElementById('chapter-notes');
 const chapterButtons = document.querySelectorAll('[data-chapter]');
+const alphabetDisplay = document.getElementById('alphabetDisplay');
 
 // 🗣 Speak Swedish text
 function speakSwedish(text) {
@@ -53,14 +54,11 @@ function populateLetterFilter() {
 
 // 🔤 Toggle Swedish alphabet grid
 function toggleSwedishAlphabet() {
-  const target = document.getElementById('alphabetDisplay');
-  if (!target) return;
-
   // Always hide vocabulary section when showing alphabet
   vocabTableContainer.style.display = 'none';
 
   if (isAlphabetVisible) {
-    target.innerHTML = '';
+    alphabetDisplay.innerHTML = '';
     isAlphabetVisible = false;
     return;
   }
@@ -74,8 +72,8 @@ function toggleSwedishAlphabet() {
     btn.onclick = () => speakSwedish(letter);
     container.appendChild(btn);
   });
-  target.innerHTML = '';
-  target.appendChild(container);
+  alphabetDisplay.innerHTML = '';
+  alphabetDisplay.appendChild(container);
   isAlphabetVisible = true;
 }
 
@@ -199,7 +197,6 @@ function resetCards() {
 
 // 🗂 Show or hide vocabulary table
 function toggleVocabTable() {
-  const alphabetDisplay = document.getElementById('alphabetDisplay');
   if (!vocabTableContainer || !vocabTableBody) return;
 
   // Always hide alphabet when showing vocabulary
