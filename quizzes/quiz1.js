@@ -1,4 +1,5 @@
-// quiz1.js
+import { renderChapterNavigation } from "../navigation.js";
+
 export function evaluateChapter1Quiz() {
   const form = document.getElementById('chapter1QuizForm');
   const resultDiv = document.getElementById('quizResult');
