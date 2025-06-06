@@ -1,5 +1,4 @@
-import { renderChapterNavigation } from "../navigation.js";
-
+// quiz1.js
 export function evaluateChapter1Quiz() {
   const form = document.getElementById('chapter1QuizForm');
   const resultDiv = document.getElementById('quizResult');
@@ -32,26 +31,59 @@ export function evaluateChapter1Quiz() {
   };
 
   let score = 0;
+  Object.entries(answers).forEach(([key, correct]) => {
+    if (userAnswers[key] === correct) score++;
+  });
+
   let feedbackHTML = '<h4 style="text-align:left">✅ Your Score:</h4>';
   feedbackHTML += `<p style="text-align:left">You scored ${score} out of ${
     Object.keys(answers).length
   }.</p>`;
 
   feedbackHTML +=
-    '<h4 style="text-align:left">📋 Correct Answers:</h4><ol style="text-align:left">';
+    '<button id="toggleAnswersBtn" type="button">Show/Hide Correct Answers</button>';
+  feedbackHTML +=
+    '<div id="answerList" style="display:none"><h4 style="text-align:left">📋 Correct Answers:</h4><ol style="text-align:left">';
   Object.entries(answers).forEach(([key, correct], i) => {
     const userAnswer = userAnswers[key] || '<i>Blank</i>';
     const isCorrect = userAnswer === correct;
-    if (isCorrect) score++;
     feedbackHTML += `<li><strong>Q${
       i + 1
     }:</strong> Your answer: <code>${userAnswer}</code> — Correct: <code>${correct}</code> ${
       isCorrect ? '✅' : '❌'
     }</li>`;
   });
-  feedbackHTML += '</ol>';
+  feedbackHTML += '</ol></div>';
+
+  // Add navigation for user experience
+  feedbackHTML += `
+    <div class="quiz-navigation">
+      <button id="prevChapterBtn" type="button">⬅️ Previous Chapter</button>
+      <button id="nextChapterBtn" type="button">Next Chapter ➡️</button>
+    </div>
+  `;
 
   resultDiv.innerHTML = feedbackHTML;
+
+  // Avoid reloading or hiding anything
+  const toggleAnswersBtn = document.getElementById('toggleAnswersBtn');
+  const answerList = document.getElementById('answerList');
+  toggleAnswersBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (answerList) {
+      answerList.style.display =
+        answerList.style.display === 'none' ? 'block' : 'none';
+    }
+  });
+
+  document.getElementById('prevChapterBtn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    alert('Previous chapter navigation not implemented yet.');
+  });
+  document.getElementById('nextChapterBtn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    alert('Next chapter navigation not implemented yet.');
+  });
 }
 
 export function bindChapter1QuizEvents() {
@@ -60,12 +92,17 @@ export function bindChapter1QuizEvents() {
   const submitBtn = document.getElementById('submitChapter1QuizBtn');
 
   if (toggleBtn && quizDiv) {
-    toggleBtn.addEventListener('click', () => {
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       quizDiv.classList.toggle('hidden');
     });
   }
 
   if (submitBtn) {
-    submitBtn.addEventListener('click', evaluateChapter1Quiz);
+    submitBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      evaluateChapter1Quiz();
+    });
   }
 }
