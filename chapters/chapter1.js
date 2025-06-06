@@ -157,5 +157,91 @@ export const chapter1Content = `
     <li><label><input type="checkbox"> Practice pronunciation: soft 'g' and light 'r'</label></li>
     <li><label><input type="checkbox"> Practice work/study conversation phrases</label></li>
   </ul>
+
+  <br><br>
+
+
+  <h3>🧪 Chapter 1 Quiz</h3>
+  <button id="toggleChapter1QuizBtn">Take Quiz</button>
+
+  <div id="chapter1Quiz" class="quiz-section hidden">
+    <form id="chapter1QuizForm">
+      <div class="quiz-question">
+        <p>1. Fill in the blank: <strong>Jag ____ från Sverige.</strong></p>
+        <input type="text" name="q1" placeholder="Your answer here" />
+      </div>
+
+      <div class="quiz-question">
+        <p>2. What does “Vad heter du?” mean?</p>
+        <label><input type="radio" name="q2" value="a" /> Where are you from?</label><br />
+        <label><input type="radio" name="q2" value="b" /> What do you do?</label><br />
+        <label><input type="radio" name="q2" value="c" /> What is your name?</label><br />
+      </div>
+
+      <div class="quiz-question">
+        <p>3. Choose the correct pronoun for “we”:</p>
+        <select name="q3">
+          <option value="">Select an answer</option>
+          <option value="jag">jag</option>
+          <option value="vi">vi</option>
+          <option value="ni">ni</option>
+        </select>
+      </div>
+
+      <div class="quiz-question">
+        <p>4. How do you say “I’m looking for a job” in Swedish?</p>
+        <input type="text" name="q4" placeholder="Your answer here" />
+      </div>
+
+      <div class="quiz-question">
+        <p>5. Select the correct translation for "He speaks Bengali":</p>
+        <select name="q5">
+          <option value="">Select an answer</option>
+          <option value="han talar bengaliska">han talar bengaliska</option>
+          <option value="hon talar bengaliska">hon talar bengaliska</option>
+          <option value="de talar bengaliska">de talar bengaliska</option>
+        </select>
+      </div>
+
+      <div class="quiz-question">
+        <p>6. What is the meaning of "Jag arbetar inte här"?</p>
+        <label><input type="radio" name="q6" value="a" /> I do not live here</label><br />
+        <label><input type="radio" name="q6" value="b" /> I do not work here</label><br />
+        <label><input type="radio" name="q6" value="c" /> I do not study here</label><br />
+      </div>
+
+      <div class="quiz-question">
+        <p>7. Fill in: <strong>Han ____ från Indien.</strong></p>
+        <input type="text" name="q7" placeholder="Your answer here" />
+      </div>
+
+      <div class="quiz-question">
+        <p>8. What is the Swedish word for “she”?</p>
+        <select name="q8">
+          <option value="">Select an answer</option>
+          <option value="hon">hon</option>
+          <option value="han">han</option>
+          <option value="du">du</option>
+        </select>
+      </div>
+
+      <div class="quiz-question">
+        <p>9. Which of these is a long vowel word?</p>
+        <label><input type="radio" name="q9" value="a" /> tack</label><br />
+        <label><input type="radio" name="q9" value="b" /> tak</label><br />
+        <label><input type="radio" name="q9" value="c" /> klass</label><br />
+      </div>
+
+      <div class="quiz-question">
+        <p>10. What does “Varifrån kommer du?” mean?</p>
+        <input type="text" name="q10" placeholder="Your answer here" />
+      </div>
+
+      <button type="button" id="submitChapter1QuizBtn">Submit Answers</button>
+      <div id="quizResult"></div>
+    </form>
+  </div>
 </div>
+
+
 `;

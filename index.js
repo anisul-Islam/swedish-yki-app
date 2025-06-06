@@ -2,6 +2,10 @@
 import { chapter1Content } from './chapters/chapter1.js';
 import { chapter2Content } from './chapters/chapter2.js';
 import { vocabulary } from './vocabulary.js';
+import {
+  evaluateChapter1Quiz,
+  bindChapter1QuizEvents,
+} from './quizzes/quiz1.js';
 
 const toggleDarkModeBtn = document.getElementById('toggleDarkMode');
 toggleDarkModeBtn.addEventListener('click', () => {
@@ -255,6 +259,11 @@ function renderChapterInfo(chapter = 1) {
     container.innerHTML =
       chaptersInfo[chapter - 1] || '<p>No notes available.</p>';
     container.style.display = 'block';
+
+    // ✅ Bind quiz logic for Chapter 1 only
+    if (chapter === 1) {
+      bindChapter1QuizEvents();
+    }
   }
 }
 
@@ -309,4 +318,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Hide chapter notes by default
   if (chapterContainer) chapterContainer.style.display = 'none';
+
+  bindChapter1QuizEvents(); // Activate quiz toggling and submission
 });

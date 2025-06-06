@@ -332,6 +332,37 @@ details button:hover {
   background: #2980b9;
 }
 
+/* quiz  */
+.quiz-section {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  background: #fefefe;
+}
+
+body.dark-mode .quiz-section {
+  background: #1f1f1f;
+  border-color: #555;
+}
+
+.quiz-question {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.quiz-answer {
+  display: block;
+  margin-top: 8px;
+  color: #888;
+  font-size: 14px;
+}
+
+body.dark-mode .quiz-answer {
+  color: #aaa;
+}
+
+
 /* Footer Styles */
 .footer {
   padding: 20px 0;
