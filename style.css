@@ -319,7 +319,72 @@ body.dark-mode .phrase-table td {
   margin-bottom: 8px;
 }
 
-details {
+.chapter-toggle summary {
+  background: linear-gradient(90deg, #facc15, #f59e0b);
+  color: #1a1a1a;
+  font-size: 1.2rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+body.dark-mode .chapter-toggle summary {
+  background: linear-gradient(90deg, #facc15, #f59e0b);
+  color: #000;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.chapter-toggle summary:hover,
+.chapter-toggle summary:focus {
+  background: linear-gradient(90deg, #fde68a, #fbbf24);
+  outline: none;
+}
+
+
+.chapter-content-slot {
+  margin-top: 10px;
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.word {
+  display: inline-block;
+  padding: 6px 10px;
+  margin: 3px;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  cursor: grab;
+  transition: background-color 0.2s;
+}
+
+.word.dragging {
+  opacity: 0.6;
+  background-color: #dbeafe;
+}
+
+
+body.dark-mode .word {
+  background-color: #333;
+  border-color: #555;
+  color: #fff;
+}
+
+body.dark-mode .word.dragging {
+  background-color: #555;
+}
+
+
+/* details {
   width: 100%;
 }
 
@@ -330,7 +395,7 @@ details button {
 
 details button:hover {
   background: #2980b9;
-}
+} */
 
 /* quiz  */
 .quiz-section {
@@ -361,7 +426,6 @@ body.dark-mode .quiz-section {
 body.dark-mode .quiz-answer {
   color: #aaa;
 }
-
 
 /* Footer Styles */
 .footer {

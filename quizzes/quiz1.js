@@ -1,4 +1,4 @@
-// quiz1.js
+// @ts-nocheck
 export function evaluateChapter1Quiz() {
   const form = document.getElementById('chapter1QuizForm');
   const resultDiv = document.getElementById('quizResult');
@@ -55,14 +55,6 @@ export function evaluateChapter1Quiz() {
   });
   feedbackHTML += '</ol></div>';
 
-  // Add navigation for user experience
-  feedbackHTML += `
-    <div class="quiz-navigation">
-      <button id="prevChapterBtn" type="button">⬅️ Previous Chapter</button>
-      <button id="nextChapterBtn" type="button">Next Chapter ➡️</button>
-    </div>
-  `;
-
   resultDiv.innerHTML = feedbackHTML;
 
   // Avoid reloading or hiding anything
@@ -74,15 +66,6 @@ export function evaluateChapter1Quiz() {
       answerList.style.display =
         answerList.style.display === 'none' ? 'block' : 'none';
     }
-  });
-
-  document.getElementById('prevChapterBtn')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    alert('Previous chapter navigation not implemented yet.');
-  });
-  document.getElementById('nextChapterBtn')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    alert('Next chapter navigation not implemented yet.');
   });
 }
 

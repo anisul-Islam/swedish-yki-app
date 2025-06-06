@@ -80,27 +80,22 @@
         </table>
       </div>
       <br /><br />
-      <details
-        style="
-          margin: 20px 0;
-          border: 1px solid #ccc;
-          padding: 1rem;
-          border-radius: 8px;
-        "
-      >
-        <summary style="font-weight: bold; font-size: 1.1rem; cursor: pointer">
-          📚 View Available Chapters
-        </summary>
-        <div style="margin-top: 1rem">
-          <button data-chapter="1">📘 Chapter 1</button>
-          <br />
-          <button data-chapter="2">📘 Chapter 2</button>
+      <details class="chapter-toggle" open>
+        <summary>📚 Learn & Practice All Chapters Here</summary>
+        <div id="chapterButtonsContainer" style="margin-top: 1rem">
+          <button class="chapter-btn" data-chapter="1">📘 Show / Hide Chapter 1</button>
+          <div id="chapter-content-1" class="chapter-content-slot"></div>
+
+          <button class="chapter-btn" data-chapter="2">📘 Show / Hide Chapter 2</button>
+          <div id="chapter-content-2" class="chapter-content-slot"></div>
+
+          <!-- Add up to Chapter 10 like this -->
         </div>
       </details>
 
       <div id="chapterChecklistContainer"></div>
       <div id="chapter-notes" style="margin-top: 20px"></div>
-   
+
       <footer class="footer">
         <div class="footer-content">
           <div class="footer-section copyright">

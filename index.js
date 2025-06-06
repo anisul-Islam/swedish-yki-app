@@ -253,24 +253,107 @@ function applyFilters(letter = '', category = '') {
 }
 
 // 📘 Render chapter notes
-function renderChapterInfo(chapter = 1) {
-  const container = document.getElementById('chapter-notes');
-  if (container) {
-    container.innerHTML =
-      chaptersInfo[chapter - 1] || '<p>No notes available.</p>';
-    container.style.display = 'block';
+// function renderChapterInfo(chapter = 1) {
+//   console.log(chapter)
+//   const container = document.getElementById('chapter-notes');
+//   if (container) {
+//     container.innerHTML =
+//       chaptersInfo[chapter - 1] || '<p>No notes available.</p>';
+//     container.style.display = 'block';
 
-    // ✅ Bind quiz logic for Chapter 1 only
-    if (chapter === 1) {
-      bindChapter1QuizEvents();
-    }
-  }
-}
+//     // ✅ Bind quiz logic for Chapter 1 only
+//     if (parseInt(chapter) === 1) {
+//       bindChapter1QuizEvents();
+//       console.log("hi1")
+//       enableActivityEDragAndDrop(); // <- this line is essential here
+//        console.log('hi2');
+//     }
+//   }
+// }
 
 // 🔄 Switch visible chapter
-function switchChapter(chapterNumber) {
-  const chapter = parseInt(chapterNumber, 10);
-  renderChapterInfo(chapter);
+// function switchChapter(chapterNumber) {
+//   const chapter = parseInt(chapterNumber, 10);
+//   renderChapterInfo(chapter);
+// }
+
+const correctSentences = {
+  1: ['talar', 'du', 'franska', '?'],
+  2: ['Georgios', 'är', 'inte', 'gift'],
+  3: ['varifrån', 'kommer', 'Juan', '?'],
+  4: ['Lisa', 'studerar', 'matematik'],
+  5: ['vad', 'talar', 'du', 'språk'], // or ['Vad', 'talar', 'du', 'för', 'språk'] if you update sentence
+  6: ['Renate', 'har', 'två', 'barn'],
+  7: ['vad', 'jobbar', 'du', 'med'],
+  8: ['Kim', 'studerar', 'till', 'ingenjör'],
+  9: ['Johan', 'söker', 'jobb'],
+};
+
+function validateActivityE() {
+  const listItems = document.querySelectorAll('#activity-e-list li');
+  let correctCount = 0;
+
+  listItems.forEach((li) => {
+    const id = li.getAttribute('data-id');
+    const wordSpans = Array.from(li.querySelectorAll('.word'));
+    const userWords = wordSpans.map((w) => w.textContent.trim());
+    const correctWords = correctSentences[id];
+    const isCorrect = userWords.join(' ') === correctWords.join(' ');
+    if (isCorrect) {
+      li.style.backgroundColor = '#d1fae5'; // greenish for correct
+      correctCount++;
+    } else {
+      li.style.backgroundColor = '#fee2e2'; // reddish for incorrect
+    }
+  });
+
+  document.getElementById(
+    'activityEFeedback'
+  ).innerHTML = `✅ ${correctCount} of ${listItems.length} sentences are correct.`;
+}
+
+
+
+function enableActivityEDragAndDrop() {
+
+  const listItems = document.querySelectorAll('#activity-e-list li');
+
+  listItems.forEach((li) => {
+    const words = Array.from(li.querySelectorAll('.word'));
+
+    words.forEach((word) => {
+      word.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', word.innerText);
+        e.dataTransfer.effectAllowed = 'move';
+        word.classList.add('dragging');
+      });
+
+      word.addEventListener('dragend', () => {
+        word.classList.remove('dragging');
+      });
+
+      word.addEventListener('dragover', (e) => {
+        e.preventDefault();
+      });
+
+      word.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const draggedWord = document.querySelector('.dragging');
+        if (!draggedWord || draggedWord === word) return;
+
+        const parent = word.parentElement;
+        const wordList = Array.from(parent.querySelectorAll('.word'));
+        const fromIndex = wordList.indexOf(draggedWord);
+        const toIndex = wordList.indexOf(word);
+
+        if (fromIndex < toIndex) {
+          parent.insertBefore(draggedWord, word.nextSibling);
+        } else {
+          parent.insertBefore(draggedWord, word);
+        }
+      });
+    });
+  });
 }
 
 // 📦 Setup listeners and init app
@@ -303,15 +386,36 @@ window.addEventListener('DOMContentLoaded', () => {
   letterFilter?.addEventListener('change', () => applyFilters());
   categoryFilter?.addEventListener('change', () => applyFilters());
 
-  chapterButtons.forEach((btn, i) => {
+  chapterButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
-      if (currentVisibleChapter === i) {
-        chapterContainer.style.display = 'none';
-        currentVisibleChapter = null;
+      const chapterNum = btn.dataset.chapter;
+      const slot = document.getElementById(`chapter-content-${chapterNum}`);
+
+      if (!slot) return;
+
+      // Toggle visibility
+      const isVisible = slot.style.display === 'block';
+      document.querySelectorAll('.chapter-content-slot').forEach((div) => {
+        div.style.display = 'none';
+      });
+
+      if (!isVisible) {
+        slot.innerHTML =
+          chaptersInfo[chapterNum - 1] || '<p>No notes available.</p>';
+        slot.style.display = 'block';
+
+        if (parseInt(chapterNum) === 1) {
+          bindChapter1QuizEvents();
+           enableActivityEDragAndDrop();  
+            const checkBtn = document.getElementById('checkActivityE');
+            if (checkBtn) {
+              const newBtn = checkBtn.cloneNode(true); // clone to remove old listeners
+              checkBtn.parentNode.replaceChild(newBtn, checkBtn);
+              newBtn.addEventListener('click', validateActivityE);
+            }
+        }
       } else {
-        renderChapterInfo(i + 1);
-        chapterContainer.style.display = 'block';
-        currentVisibleChapter = i;
+        slot.style.display = 'none';
       }
     });
   });
