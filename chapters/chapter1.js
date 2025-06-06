@@ -346,9 +346,11 @@ export const chapter1Content = `
         <li data-id="8"><span class="word" draggable="true">Kim</span> <span class="word" draggable="true">studerar</span> <span class="word" draggable="true">ingenjör</span> <span class="word" draggable="true">till</span></li>
         <li data-id="9"><span class="word" draggable="true">Johan</span> <span class="word" draggable="true">söker</span> <span class="word" draggable="true">jobb</span></li>
       </ul>
-<button id="checkActivityE" style="margin-top: 1rem; padding: 0.5rem 1rem; font-weight: bold; background-color: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer;">
+<button id="checkActivityE">
   ✅ Check My Order
 </button>
+<button id="randomActivityE">🔁 Random</button>
+
 <div id="activityEFeedback" style="margin-top: 0.5rem; font-weight: bold;"></div>
 
 

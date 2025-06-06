@@ -371,7 +371,9 @@ body.dark-mode .chapter-toggle summary {
   opacity: 0.6;
   background-color: #dbeafe;
 }
-
+#checkActivityE{
+  margin-top: 1rem; padding: 0.5rem 1rem; font-weight: bold; background-color: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer;
+}
 
 body.dark-mode .word {
   background-color: #333;

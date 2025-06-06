@@ -299,12 +299,9 @@ function validateActivityE() {
     const userWords = wordSpans.map((w) => w.textContent.trim());
     const correctWords = correctSentences[id];
     const isCorrect = userWords.join(' ') === correctWords.join(' ');
-    if (isCorrect) {
-      li.style.backgroundColor = '#d1fae5'; // greenish for correct
-      correctCount++;
-    } else {
-      li.style.backgroundColor = '#fee2e2'; // reddish for incorrect
-    }
+
+    li.style.backgroundColor = isCorrect ? '#d1fae5' : '#fee2e2';
+    if (isCorrect) correctCount++;
   });
 
   document.getElementById(
@@ -313,29 +310,40 @@ function validateActivityE() {
 }
 
 
+function shuffleWords(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+function randomizeActivityE() {
+  const listItems = document.querySelectorAll('#activity-e-list li');
+  listItems.forEach((li) => {
+    const id = li.getAttribute('data-id');
+    const original = [...correctSentences[id]];
+    const shuffled = shuffleWords(original);
+    li.innerHTML = shuffled
+      .map((word) => `<span class="word" draggable="true">${word}</span>`)
+      .join(' ');
+  });
+  enableActivityEDragAndDrop();
+  document.getElementById('activityEFeedback').innerHTML = '';
+}
 
 function enableActivityEDragAndDrop() {
-
   const listItems = document.querySelectorAll('#activity-e-list li');
-
   listItems.forEach((li) => {
     const words = Array.from(li.querySelectorAll('.word'));
-
     words.forEach((word) => {
       word.addEventListener('dragstart', (e) => {
         e.dataTransfer.setData('text/plain', word.innerText);
         e.dataTransfer.effectAllowed = 'move';
         word.classList.add('dragging');
       });
-
-      word.addEventListener('dragend', () => {
-        word.classList.remove('dragging');
-      });
-
-      word.addEventListener('dragover', (e) => {
-        e.preventDefault();
-      });
-
+      word.addEventListener('dragend', () => word.classList.remove('dragging'));
+      word.addEventListener('dragover', (e) => e.preventDefault());
       word.addEventListener('drop', (e) => {
         e.preventDefault();
         const draggedWord = document.querySelector('.dragging');
@@ -356,7 +364,7 @@ function enableActivityEDragAndDrop() {
   });
 }
 
-// 📦 Setup listeners and init app
+// 📦 Setup listeners
 window.addEventListener('DOMContentLoaded', () => {
   populateLetterFilter();
   showCard();
@@ -367,7 +375,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   swedishAlphabetBtn?.addEventListener('click', toggleSwedishAlphabet);
   flashcard?.addEventListener('click', toggleCard);
-
   document.getElementById('prevCard')?.addEventListener('click', prevCard);
   document.getElementById('nextCard')?.addEventListener('click', nextCard);
   document.getElementById('playAudio')?.addEventListener('click', playAudio);
@@ -393,7 +400,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
       if (!slot) return;
 
-      // Toggle visibility
       const isVisible = slot.style.display === 'block';
       document.querySelectorAll('.chapter-content-slot').forEach((div) => {
         div.style.display = 'none';
@@ -406,13 +412,21 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (parseInt(chapterNum) === 1) {
           bindChapter1QuizEvents();
-           enableActivityEDragAndDrop();  
-            const checkBtn = document.getElementById('checkActivityE');
-            if (checkBtn) {
-              const newBtn = checkBtn.cloneNode(true); // clone to remove old listeners
-              checkBtn.parentNode.replaceChild(newBtn, checkBtn);
-              newBtn.addEventListener('click', validateActivityE);
-            }
+          enableActivityEDragAndDrop();
+
+          const checkBtn = document.getElementById('checkActivityE');
+          if (checkBtn) {
+            const newBtn = checkBtn.cloneNode(true);
+            checkBtn.parentNode.replaceChild(newBtn, checkBtn);
+            newBtn.addEventListener('click', validateActivityE);
+          }
+
+          const randomBtn = document.getElementById('randomActivityE');
+          if (randomBtn) {
+            const newRand = randomBtn.cloneNode(true);
+            randomBtn.parentNode.replaceChild(newRand, randomBtn);
+            newRand.addEventListener('click', randomizeActivityE);
+          }
         }
       } else {
         slot.style.display = 'none';
@@ -420,8 +434,6 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Hide chapter notes by default
   if (chapterContainer) chapterContainer.style.display = 'none';
-
-  bindChapter1QuizEvents(); // Activate quiz toggling and submission
+  bindChapter1QuizEvents();
 });
