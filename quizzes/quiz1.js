@@ -15,20 +15,28 @@ export function evaluateChapter1Quiz() {
     q8: 'hon',
     q9: 'b',
     q10: 'where are you from?',
+    q11: 'b',
+    q12: 'b',
+    q13: 'a',
+    q14: 'c',
+    q15: 'b',
+    q16: 'b',
+    q17: 'jag har två barn',
+    q18: 'a',
+    q19: 'b',
+    q20: 'hon har en bror',
   };
 
-  const userAnswers = {
-    q1: form.q1?.value.trim().toLowerCase(),
-    q2: form.q2?.value?.toLowerCase(),
-    q3: form.q3?.value?.toLowerCase(),
-    q4: form.q4?.value.trim().toLowerCase(),
-    q5: form.q5?.value.trim().toLowerCase(),
-    q6: form.q6?.value?.toLowerCase(),
-    q7: form.q7?.value.trim().toLowerCase(),
-    q8: form.q8?.value?.toLowerCase(),
-    q9: form.q9?.value?.toLowerCase(),
-    q10: form.q10?.value.trim().toLowerCase(),
-  };
+  const userAnswers = {};
+  for (let i = 1; i <= 20; i++) {
+    const key = `q${i}`;
+    const el = form[key];
+    if (el?.type === 'radio' || el?.type === 'select-one') {
+      userAnswers[key] = form[key]?.value?.toLowerCase();
+    } else {
+      userAnswers[key] = form[key]?.value.trim().toLowerCase();
+    }
+  }
 
   let score = 0;
   Object.entries(answers).forEach(([key, correct]) => {
@@ -57,7 +65,6 @@ export function evaluateChapter1Quiz() {
 
   resultDiv.innerHTML = feedbackHTML;
 
-  // Avoid reloading or hiding anything
   const toggleAnswersBtn = document.getElementById('toggleAnswersBtn');
   const answerList = document.getElementById('answerList');
   toggleAnswersBtn?.addEventListener('click', (e) => {

@@ -4,7 +4,9 @@
 * {
   box-sizing: border-box;
 }
-
+html{
+  scroll-behavior: smooth;
+}
 body {
   font-family: Arial, sans-serif;
   background: #f4f4f4;
@@ -431,8 +433,8 @@ body.dark-mode .quiz-answer {
 
 /* Footer Styles */
 .footer {
-  padding: 20px 0;
-  border-top: 1px solid #333;
+  padding: 40px 0;
+  /* border-top: 1px solid #333; */
   font-size: 14px;
   width: 100%;
   background: transparent;
@@ -509,6 +511,130 @@ body.dark-mode .social-icons a {
   color: #f39c12;
   transform: scale(1.2);
 }
+
+/* 🔖 Chapter Navigation */
+.chapter-nav {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  z-index: 1000;
+  padding: 10px 20px;
+  border-bottom: 2px solid #ddd;
+  width: 100%;
+  overflow-x: auto;
+}
+
+body.dark-mode .chapter-nav {
+  background: #1e1e1e;
+  border-bottom-color: #444;
+}
+
+.chapter-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.chapter-nav li a {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #3498db;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.chapter-nav li a:hover {
+  background: #2980b9;
+}
+
+body.dark-mode .chapter-nav li a {
+  background: #444;
+  color: #fff;
+}
+
+body.dark-mode .chapter-nav li a:hover {
+  background: #555;
+}
+
+/* 📚 Chapter Block Styles */
+.chapter-block {
+  margin: 40px 0;
+  padding: 5px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s ease;
+}
+
+body.dark-mode .chapter-block {
+  background: #1e1e1e;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.03);
+}
+
+/* 🎨 Themed Border Accent for Each Block */
+.block-intro     { border-left: 6px solid #2980b9; }
+.block-learn     { border-left: 6px solid #27ae60; }
+.block-grammar   { border-left: 6px solid #e67e22; }
+.block-vocab     { border-left: 6px solid #8e44ad; }
+.block-family    { border-left: 6px solid #e74c3c; }
+.block-quiz      { border-left: 6px solid #f1c40f; }
+.block-writing   { border-left: 6px solid #16a085; }
+.block-profession{ border-left: 6px solid #9b59b6; }
+.block-phrases   { border-left: 6px solid #00b894; }
+.block-negation  { border-left: 6px solid #d63031; }
+.block-activity  { border-left: 6px solid #2c3e50; }
+.block-checklist { border-left: 6px solid #fdcb6e; }
+
+.chapter-block h2 {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 10px;
+}
+
+body.dark-mode .chapter-block h2 {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.collapsible.collapsed > *:not(h2) {
+  display: none;
+}
+
+collapsible {
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.collapsible:hover {
+  background-color: #f0f4ff;
+  border-left: 4px solid #3498db;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .collapsible:hover {
+  background-color: #1f2a38;
+  border-left: 4px solid #6bb1f4;
+}
+.collapsible h2 {
+  transition: all 0.2s ease;
+}
+.collapsible.collapsed h2::after {
+  content: " ▼";
+}
+.collapsible:not(.collapsed) h2::after {
+  content: " ▲";
+}
+
+
+/* ➕ Future Improvement: Make collapsible with JS if needed */
+
 
 @media screen and (max-width: 991px) {
   .container {

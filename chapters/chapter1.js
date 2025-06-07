@@ -1,9 +1,27 @@
 export const chapter1Content = `
-<div class="chapter-content">
-  <h2>📘 Chapter 1 – You can speak Swedish!</h2>
-  <p>🎯 Goal: Gain confidence using Swedish in daily life by learning how to greet, introduce yourself and others, ask and answer questions, describe relationships, professions, and origins, use basic grammar patterns, and pronounce key sounds.</p>
 
- <h3>🧠 What you'll learn</h3>
+<nav class="chapter-nav">
+  <ul>
+    <li><a href="#block-intro">📘 Intro</a></li>
+    <li><a href="#block-grammar">📌 Grammar</a></li>
+    <li><a href="#block-vocab">📇 Vocabulary</a></li>
+    <li><a href="#block-profession">👷‍♀️ Professions</a></li>
+    <li><a href="#block-phrases">💬 Phrases</a></li>
+    <li><a href="#block-negation">🚫 Negation</a></li>
+    <li><a href="#block-family">👪 Family</a></li>
+    <li><a href="#block-writing">✍️ Writing</a></li>
+    <li><a href="#block-activity">🧩 Activity</a></li>
+    <li><a href="#block-quiz">🧪 Quiz</a></li>
+    <li><a href="#block-checklist">✅ Checklist</a></li>
+  </ul>
+</nav>
+
+<div class="chapter-content">
+
+<section id="block-intro" class="chapter-block block-intro collapsible">  
+<h2>📘 Chapter 1 – You can speak Swedish!</h2>
+  <p>🎯 Goal: Gain confidence using Swedish in daily life by learning how to greet, introduce yourself and others, ask and answer questions, describe relationships, professions, and origins, use basic grammar patterns, and pronounce key sounds.</p> 
+  
   <ul>
     <li>👋 Greet others and ask names</li>
     <li>🌍 Ask and answer about origin and nationality</li>
@@ -15,12 +33,11 @@ export const chapter1Content = `
     <li>💬 Describe professions and what languages people speak</li>
     <li>📝 Introduce yourself and others in present tense</li>
     <li>🌐 Expand vocabulary: countries, languages, conjunctions</li>
-  </ul>
-
-<br/><br/>
+  </ul></section>
 
 
-  <h3>📌 Key Grammar</h3>
+<section id="block-grammar" class="chapter-block block-grammar collapsible">
+<h2>📌 Key Grammar</h2>
   <ul>
     <li>Verb Position: Verbs go in position 2</li>
     <li>Pronouns: jag, du, han, hon, vi, ni, de</li>
@@ -30,7 +47,6 @@ export const chapter1Content = `
     <li>Conjunctions: och (and), eller (or), men (but), för (because)</li>
     <li>Pronunciation Tips: 'g' is often soft or silent (e.g., <em>dag</em> → <em>da</em>), and 'r' is lightly rolled (e.g., <em>röd</em>, <em>Sverige</em>)</li>
   </ul>
-<br/><br/>
 
 <h3>Swedish Vowel Length Rules</h3>
   <p>Rule: A vowel (AEIOUYÅÄÖ) is <em>long</em> if followed by one consonant; <em>short</em> if followed by two or more.</p>
@@ -42,7 +58,7 @@ export const chapter1Content = `
     <li>glas (glass) – long 'a'</li>
     <li>klass (class) – short 'a'</li>
   </ul>
-<br/><br/>
+
   <h3>Consonant + Vowel Pronunciation Rules</h3>
   <p>Certain consonants change pronunciation when followed by front vowels (e, i, y, ä, ö):</p>
   <ul>
@@ -52,9 +68,10 @@ export const chapter1Content = `
     <li>-tion → sounds like 'khun' — <em>lektion</em> → lekhun, <em>station</em> → stakhun</li>
     <li>z → sounds like 's' — <em>zon</em> → son, <em>zebra</em> → sebra</li>
   </ul>
-<br/><br/>
+</section>
 
-<h3>📇 Swedish Pronouns</h3>
+<section id="block-vocab" class="chapter-block block-vocab collapsible">
+<h2>📇 Swedish Pronouns</h2>
   <div class="table-container">
     <table class="phrase-table">
       <thead>
@@ -71,7 +88,6 @@ export const chapter1Content = `
       </tbody>
     </table>
   </div>
-<br/><br/>
 
   <h3>🔗 Useful Conjunctions</h3>
   <div class="table-container">
@@ -88,7 +104,6 @@ export const chapter1Content = `
       </tbody>
     </table>
   </div>
-  <br><br>
 
  <h3>🌍 Common Country Names in Swedish</h3>
   <div class="table-container">
@@ -116,10 +131,6 @@ export const chapter1Content = `
     </table>
   </div>
 
-  <br><br>
-
-
-
  <h3>🌐 Common Languages in Swedish</h3>
   <div class="table-container">
     <table class="phrase-table">
@@ -144,9 +155,11 @@ export const chapter1Content = `
       <tr><td>portugisiska</td><td>Portugese</td></tr>
     </table>
   </div>
-<br/><br/>
+</section>
 
-  <h3>👷‍♀️ Common Professions</h3>
+
+<section id="block-profession" class="chapter-block block-profession collapsible">
+  <h2>👷‍♀️ Common Professions</h2>
   <div class="table-container">
     <table class="phrase-table">
       <thead>
@@ -171,9 +184,10 @@ export const chapter1Content = `
       </tbody>
     </table>
   </div>
-<br/><br/>
+</section>
 
-  <h3>💬 Useful Phrases</h3>
+<section id="block-phrases" class="chapter-block block-phrases collapsible">
+  <h2>💬 Useful Phrases</h2>
   <div class="table-container">
     <table class="phrase-table">
       <tr><th>Swedish</th><th>English</th></tr>
@@ -188,9 +202,10 @@ export const chapter1Content = `
       <tr><td>Jag är student/pluggar.</td><td>I am student.</td></tr>
     </table>
   </div>
-<br/><br/>
- 
-  <h3>🚫 Negation Practice with "inte"</h3>
+</section>
+
+ <section id="block-negation" class="chapter-block block-negation collapsible">
+  <h2>🚫 Negation Practice with "inte"</h2>
    <p style="margin-top: 1rem;"><em>💡 Tip: The word "inte" usually comes after the verb.</em></p>
   <div class="table-container">
     <table class="phrase-table">
@@ -209,9 +224,10 @@ export const chapter1Content = `
     </table>
    
   </div>
-<br/><br/>
+</section>
 
- <h3>👪 Relationship & Family Vocabulary</h3>
+<section id="block-family" class="chapter-block block-family collapsible">
+ <h2>👪 Relationship & Family Vocabulary</h2>
   <div class="table-container">
     <table class="phrase-table">
       <thead>
@@ -240,8 +256,6 @@ export const chapter1Content = `
       </tbody>
     </table>
   </div>
-
-  <br><br>
 
   <h3>📌 Jag är / Jag har with Relationship (Grouped)</h3>
   <div class="table-container">
@@ -276,7 +290,6 @@ export const chapter1Content = `
     </table>
   </div>
 
-  <br><br>
 
   <h3>💬 Common Phrases about Relationships</h3>
   <div class="table-container">
@@ -298,9 +311,10 @@ export const chapter1Content = `
     </table>
   </div>
 
-  <br><br>
+</section>
 
-  <h3>✍️ Practice Writing with Present Tense</h3>
+<section id="block-writing" class="chapter-block block-writing collapsible">
+  <h2>✍️ Practice Writing with Present Tense</h2>
 <p>This section helps reinforce how to use the present tense (presens) in Swedish when introducing yourself and others.</p>
 
 <div class="table-container">
@@ -320,9 +334,8 @@ export const chapter1Content = `
   </table>
 </div>
 
-<br><br>
 
-<h4>📝 Sample Paragraph</h4>
+<h4>📝 Sample Paragraph 1 </h4>
 <p>
   <strong>Jag heter Eva.</strong> Jag kommer från Umeå men jag bor och jobbar i Stockholm nu. <br>
   Jag är ingenjör. Jag pratar engelska och tyska. Och svenska såklart. <br>
@@ -330,10 +343,19 @@ export const chapter1Content = `
   Andreas talar tyska, italienska, engelska och lite svenska. <br>
   Jag förstår pyttelite italienska. Andreas och jag pratar tyska med varandra.
 </p>
-<br><br>
 
-<br>
-<h3>🧩 Activity E: Sentence Ordering</h3>
+<h4>📝 Sample Paragraph 2 </h4>
+<p>Jag heter Anisul. Jag kommer från Bangladesh men jag bor i Finland nu.  
+Jag är gift och jag har en fru. Vi har ett barn.  
+Jag är lärare och webbutvecklare. Jag talar svenska, engelska och bengali.  
+Min fru är från Bangladesh också. Hon är student.  
+Vi pratar bengali hemma.  
+Jag studerar svenska och vill bli bättre på språket.
+</p>
+</section>
+
+<section id="block-activity" class="chapter-block block-activity collapsible">
+<h2>🧩 Activity E: Sentence Ordering</h2>
       <p>Drag and arrange the jumbled Swedish sentences in correct word order. Practice verb-second rule and basic grammar!</p>
      <ul id="activity-e-list" class="draggable-sentences">
         <li data-id="1"><span class="word" draggable="true">franska</span> <span class="word" draggable="true">du</span> <span class="word" draggable="true">talar</span> <span class="word" draggable="true">?</span></li>
@@ -352,93 +374,154 @@ export const chapter1Content = `
 <button id="randomActivityE">🔁 Random</button>
 
 <div id="activityEFeedback" style="margin-top: 0.5rem; font-weight: bold;"></div>
+</section>
 
+<section id="block-quiz" class="chapter-block block-quiz collapsible">
+  <h2>🧪 Chapter 1 Quiz</h2>
+<button id="toggleChapter1QuizBtn">Take Quiz</button>
 
-  <br><br>
+<div id="chapter1Quiz" class="quiz-section hidden">
+  <form id="chapter1QuizForm">
+    <div class="quiz-question">
+      <p>1. Fill in the blank: <strong>Jag ____ från Sverige.</strong></p>
+      <input type="text" name="q1" placeholder="Your answer here" />
+    </div>
 
-  <h3>🧪 Chapter 1 Quiz</h3>
-  <button id="toggleChapter1QuizBtn">Take Quiz</button>
+    <div class="quiz-question">
+      <p>2. What does “Vad heter du?” mean?</p>
+      <label><input type="radio" name="q2" value="a" /> Where are you from?</label><br />
+      <label><input type="radio" name="q2" value="b" /> What do you do?</label><br />
+      <label><input type="radio" name="q2" value="c" /> What is your name?</label>
+    </div>
 
-  <div id="chapter1Quiz" class="quiz-section hidden">
-    <form id="chapter1QuizForm">
-      <div class="quiz-question">
-        <p>1. Fill in the blank: <strong>Jag ____ från Sverige.</strong></p>
-        <input type="text" name="q1" placeholder="Your answer here" />
-      </div>
+    <div class="quiz-question">
+      <p>3. Choose the correct pronoun for “we”:</p>
+      <select name="q3">
+        <option value="">Select an answer</option>
+        <option value="jag">jag</option>
+        <option value="vi">vi</option>
+        <option value="ni">ni</option>
+      </select>
+    </div>
 
-      <div class="quiz-question">
-        <p>2. What does “Vad heter du?” mean?</p>
-        <label><input type="radio" name="q2" value="a" /> Where are you from?</label><br />
-        <label><input type="radio" name="q2" value="b" /> What do you do?</label><br />
-        <label><input type="radio" name="q2" value="c" /> What is your name?</label><br />
-      </div>
+    <div class="quiz-question">
+      <p>4. Translate: “I’m looking for a job”</p>
+      <input type="text" name="q4" placeholder="Your answer here" />
+    </div>
 
-      <div class="quiz-question">
-        <p>3. Choose the correct pronoun for “we”:</p>
-        <select name="q3">
-          <option value="">Select an answer</option>
-          <option value="jag">jag</option>
-          <option value="vi">vi</option>
-          <option value="ni">ni</option>
-        </select>
-      </div>
+    <div class="quiz-question">
+      <p>5. Translate: “He speaks Bengali”</p>
+      <input type="text" name="q5" placeholder="Your answer here" />
+    </div>
 
-      <div class="quiz-question">
-        <p>4. How do you say “I’m looking for a job” in Swedish?</p>
-        <input type="text" name="q4" placeholder="Your answer here" />
-      </div>
+    <div class="quiz-question">
+      <p>6. What does “Jag arbetar inte här” mean?</p>
+      <label><input type="radio" name="q6" value="a" /> I do not live here</label><br />
+      <label><input type="radio" name="q6" value="b" /> I do not work here</label><br />
+      <label><input type="radio" name="q6" value="c" /> I do not study here</label>
+    </div>
 
-      <div class="quiz-question">
-        <p>5. Select the correct translation for "He speaks Bengali":</p>
-        <select name="q5">
-          <option value="">Select an answer</option>
-          <option value="han talar bengaliska">han talar bengaliska</option>
-          <option value="hon talar bengaliska">hon talar bengaliska</option>
-          <option value="de talar bengaliska">de talar bengaliska</option>
-        </select>
-      </div>
+    <div class="quiz-question">
+      <p>7. Fill in the blank: <strong>Han ____ från Indien.</strong></p>
+      <input type="text" name="q7" placeholder="Your answer here" />
+    </div>
 
-      <div class="quiz-question">
-        <p>6. What is the meaning of "Jag arbetar inte här"?</p>
-        <label><input type="radio" name="q6" value="a" /> I do not live here</label><br />
-        <label><input type="radio" name="q6" value="b" /> I do not work here</label><br />
-        <label><input type="radio" name="q6" value="c" /> I do not study here</label><br />
-      </div>
+    <div class="quiz-question">
+      <p>8. What is the Swedish word for “she”?</p>
+      <select name="q8">
+        <option value="">Select an answer</option>
+        <option value="hon">hon</option>
+        <option value="han">han</option>
+        <option value="du">du</option>
+      </select>
+    </div>
 
-      <div class="quiz-question">
-        <p>7. Fill in: <strong>Han ____ från Indien.</strong></p>
-        <input type="text" name="q7" placeholder="Your answer here" />
-      </div>
+    <div class="quiz-question">
+      <p>9. Which of these is a long vowel word?</p>
+      <label><input type="radio" name="q9" value="a" /> tack</label><br />
+      <label><input type="radio" name="q9" value="b" /> tak</label><br />
+      <label><input type="radio" name="q9" value="c" /> klass</label>
+    </div>
 
-      <div class="quiz-question">
-        <p>8. What is the Swedish word for “she”?</p>
-        <select name="q8">
-          <option value="">Select an answer</option>
-          <option value="hon">hon</option>
-          <option value="han">han</option>
-          <option value="du">du</option>
-        </select>
-      </div>
+    <div class="quiz-question">
+      <p>10. What does “Varifrån kommer du?” mean?</p>
+      <input type="text" name="q10" placeholder="Your answer here" />
+    </div>
 
-      <div class="quiz-question">
-        <p>9. Which of these is a long vowel word?</p>
-        <label><input type="radio" name="q9" value="a" /> tack</label><br />
-        <label><input type="radio" name="q9" value="b" /> tak</label><br />
-        <label><input type="radio" name="q9" value="c" /> klass</label><br />
-      </div>
+    <div class="quiz-question">
+      <p>11. Which sentence uses correct negation?</p>
+      <label><input type="radio" name="q11" value="a" /> Jag inte arbetar här</label><br />
+      <label><input type="radio" name="q11" value="b" /> Jag arbetar inte här</label><br />
+      <label><input type="radio" name="q11" value="c" /> Inte jag arbetar här</label>
+    </div>
 
-      <div class="quiz-question">
-        <p>10. What does “Varifrån kommer du?” mean?</p>
-        <input type="text" name="q10" placeholder="Your answer here" />
-      </div>
+    <div class="quiz-question">
+      <p>12. What is the correct verb position in Swedish?</p>
+      <label><input type="radio" name="q12" value="a" /> Verb comes first</label><br />
+      <label><input type="radio" name="q12" value="b" /> Verb comes second</label><br />
+      <label><input type="radio" name="q12" value="c" /> Verb comes last</label>
+    </div>
 
-      <button type="button" id="submitChapter1QuizBtn">Submit Answers</button>
-      <div id="quizResult"></div>
-    </form>
-  </div>
+    <div class="quiz-question">
+      <p>13. Which sentence is correct?</p>
+      <label><input type="radio" name="q13" value="a" /> Jag bor i Göteborg</label><br />
+      <label><input type="radio" name="q13" value="b" /> Bor jag i Göteborg</label><br />
+      <label><input type="radio" name="q13" value="c" /> I Göteborg bor jag</label>
+    </div>
 
-<br/><br/>
-  <h3>✅ Checklist</h3>
+    <div class="quiz-question">
+      <p>14. What is the Swedish word for “and”?</p>
+      <label><input type="radio" name="q14" value="a" /> men</label><br />
+      <label><input type="radio" name="q14" value="b" /> eller</label><br />
+      <label><input type="radio" name="q14" value="c" /> och</label>
+    </div>
+
+    <div class="quiz-question">
+      <p>15. Which is a correct sentence?</p>
+      <label><input type="radio" name="q15" value="a" /> Vi heter Eva</label><br />
+      <label><input type="radio" name="q15" value="b" /> Jag heter Eva</label><br />
+      <label><input type="radio" name="q15" value="c" /> De heter jag</label>
+    </div>
+
+    <div class="quiz-question">
+      <p>16. What does “Jag är gift” mean?</p>
+      <label><input type="radio" name="q16" value="a" /> I am tired</label><br />
+      <label><input type="radio" name="q16" value="b" /> I am married</label><br />
+      <label><input type="radio" name="q16" value="c" /> I am a teacher</label>
+    </div>
+
+    <div class="quiz-question">
+      <p>17. Translate: “I have two children”</p>
+      <input type="text" name="q17" placeholder="Your answer here" />
+    </div>
+
+    <div class="quiz-question">
+      <p>18. What does “Är du singel?” mean?</p>
+      <label><input type="radio" name="q18" value="a" /> Are you single?</label><br />
+      <label><input type="radio" name="q18" value="b" /> Are you working?</label><br />
+      <label><input type="radio" name="q18" value="c" /> Do you speak English?</label>
+    </div>
+
+    <div class="quiz-question">
+      <p>19. Translate: “My husband is from India”</p>
+      <label><input type="radio" name="q19" value="a" /> Jag är gift med Indien</label><br />
+      <label><input type="radio" name="q19" value="b" /> Min man är från Indien</label><br />
+      <label><input type="radio" name="q19" value="c" /> Hon har en pojkvän från Indien</label>
+    </div>
+
+    <div class="quiz-question">
+      <p>20. Translate: “She has a brother”</p>
+      <input type="text" name="q20" placeholder="Your answer here" />
+    </div>
+
+    <button type="button" id="submitChapter1QuizBtn">Submit Answers</button>
+    <div id="quizResult"></div>
+  </form>
+</div>
+</section>
+
+<section id="block-checklist" class="chapter-block block-checklist collapsible">
+  <h2>✅ Checklist</h2>
   <ul class="checklist">
     <li><label><input type="checkbox"> I can introduce myself and ask others’ names</label></li>
     <li><label><input type="checkbox"> I can talk about where someone comes from and their nationality</label></li>
@@ -452,8 +535,7 @@ export const chapter1Content = `
     <li><label><input type="checkbox"> I completed the Chapter 1 quiz</label></li>
   </ul>
 
-  <br/><br/>
-
+</section>
 </div>
 
 

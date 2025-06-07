@@ -1,11 +1,30 @@
 // @ts-nocheck
 import { chapter1Content } from './chapters/chapter1.js';
 import { chapter2Content } from './chapters/chapter2.js';
-import { vocabulary } from './vocabulary.js';
+import { vocabularyArray } from './vocabulary.js';
 import {
   evaluateChapter1Quiz,
   bindChapter1QuizEvents,
 } from './quizzes/quiz1.js';
+
+// 🔄 Flatten grouped vocabulary into a single array
+const vocabulary = Object.entries(vocabularyArray).flatMap(([category, entries]) =>
+  entries.map((entry) => ({ ...entry, category }))
+);
+
+function populateCategoryFilter() {
+  const categoryFilter = document.getElementById('categoryFilter');
+  categoryFilter.innerHTML = '<option value="">Filter by Category</option>';
+
+  const categories = Object.keys(vocabularyArray).sort(); // e.g., ['Adjective', 'Noun', ...]
+  categories.forEach((category) => {
+    const option = document.createElement('option');
+    option.value = category;
+    option.textContent = category;
+    categoryFilter.appendChild(option);
+  });
+}
+
 
 const toggleDarkModeBtn = document.getElementById('toggleDarkMode');
 toggleDarkModeBtn.addEventListener('click', () => {
@@ -94,9 +113,10 @@ function showCard() {
   }
   showingWord = true;
   flashcard.textContent = filteredVocabulary[currentIndex].word;
-  document.getElementById('cardCounter').textContent = `Word ${
-    currentIndex + 1
-  } of ${filteredVocabulary.length}`;
+ document.getElementById('cardCounter').textContent = `Word ${
+   currentIndex + 1
+ } of ${filteredVocabulary.length} (Total: ${vocabulary.length})`;
+
   const progress = ((currentIndex + 1) / filteredVocabulary.length) * 100;
   document.getElementById('progressBar').style.width = progress + '%';
   document.getElementById('percentageLabel').textContent = `${Math.round(
@@ -366,10 +386,12 @@ function enableActivityEDragAndDrop() {
 
 // 📦 Setup listeners
 window.addEventListener('DOMContentLoaded', () => {
+   showCard();
   populateLetterFilter();
-  showCard();
+  populateCategoryFilter(); // ✅ Add this line
+ 
 
-  document.getElementById('cardCounter').textContent = '';
+  // document.getElementById('cardCounter').textContent = '';
   document.getElementById('percentageLabel').textContent = '';
   document.getElementById('progressBar').style.width = '0%';
 
@@ -427,6 +449,16 @@ window.addEventListener('DOMContentLoaded', () => {
             randomBtn.parentNode.replaceChild(newRand, randomBtn);
             newRand.addEventListener('click', randomizeActivityE);
           }
+
+          document.querySelectorAll('.collapsible').forEach((block) => {
+            const title = block.querySelector('h2, h3');
+            if (title) {
+              title.style.cursor = 'pointer';
+              title.addEventListener('click', () => {
+                block.classList.toggle('collapsed');
+              });
+            }
+          });
         }
       } else {
         slot.style.display = 'none';
