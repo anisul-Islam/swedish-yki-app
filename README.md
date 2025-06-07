@@ -9,6 +9,7 @@ A modern, interactive web app designed to help users learn and practice Swedish 
 ## 📦 Features
 
 ### 🃏 Flashcards
+
 - Interactive flashcards for Swedish vocabulary
 - Click to flip between Swedish and English
 - 🔊 Native pronunciation for both sides
@@ -16,37 +17,44 @@ A modern, interactive web app designed to help users learn and practice Swedish 
 - Shuffle and reset buttons
 
 ### 🔍 Filter & Category Support
+
 - Filter words by:
   - 🔠 First letter
   - 🗂 Category (e.g., Noun, Verb, Phrase)
 
 ### 📚 Vocabulary Table
+
 - View all vocab in a searchable, categorized table
 - Includes speaker icons for each word’s pronunciation
 
 ### 📥 PDF Export
+
 - Download the entire vocabulary as a neatly formatted PDF
 
 ### 🔤 Alphabet Practice
+
 - Learn Swedish letters (A–Z, Å, Ä, Ö) with speech
 
 ### 📘 Chapter-Based Learning
+
 - Interactive chapter system (e.g., Chapter 1, Chapter 2)
 - Chapter notes, vocab, and grammar examples
 
 ### 🧩 Sentence Activities (Activity E)
+
 - Drag-and-drop sentence construction practice
 - Auto-feedback with correct/incorrect highlights
 - Randomize feature for extra challenge
 
 ### 🌙 Dark Mode
+
 - One-click toggle for dark/light theme
 
 ---
 
 ## 🚀 How to Use
 
-1. Open the [live app](https://your-app.netlify.app)
+1. Open the [live app](https://swedish-yki-test.netlify.app/)
 2. Choose a chapter or start flipping flashcards
 3. Practice pronunciation and sentence formation
 4. Download your vocab as PDF when ready!
@@ -64,20 +72,22 @@ A modern, interactive web app designed to help users learn and practice Swedish 
 
 ## 🙌 Support
 
-If you like this app and want to support its development, scan the QR code in the footer or visit:
+If you like this app and want to support its development, scan the QR code or visit the link:
 
 👉 [buymeacoffee.com/anisulislam](https://buymeacoffee.com/anisul)
+
+<img src="images/bmc_qr.png" alt="Scan QR to support" height="200" />
 
 ---
 
 ## 👨‍💻 Author
 
-**Anisul Islam**  
+**Anisul Islam**
 
-- 📺 [YouTube](https://www.youtube.com/@anisul-islam)  
-- 🐙 [GitHub](https://github.com/anisul-Islam)  
-- 🔗 [LinkedIn](https://www.linkedin.com/in/anisul2020)  
-- 👍 [Facebook](https://www.facebook.com/studywithanis)  
+- 📺 [YouTube](https://www.youtube.com/@anisul-islam)
+- 🐙 [GitHub](https://github.com/anisul-Islam)
+- 🔗 [LinkedIn](https://www.linkedin.com/in/anisul2020)
+- 👍 [Facebook](https://www.facebook.com/studywithanis)
 - 🌐 [Website](https://www.studywithanis.com/)
 
 ---
