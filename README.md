@@ -66,14 +66,19 @@ A modern, interactive web app designed to help users learn and practice Swedish 
 
 If you like this app and want to support its development, scan the QR code in the footer or visit:
 
-👉 [buymeacoffee.com/anisulislam](https://www.buymeacoffee.com/anisulislam)
+👉 [buymeacoffee.com/anisulislam](https://buymeacoffee.com/anisul)
 
 ---
 
 ## 👨‍💻 Author
 
 **Anisul Islam**  
-📺 [YouTube](https://www.youtube.com/@anisul-islam) | 🐙 [GitHub](https://github.com/anisul-Islam) | 🌐 [Website](https://anisul-islam.dev)
+
+- 📺 [YouTube](https://www.youtube.com/@anisul-islam)  
+- 🐙 [GitHub](https://github.com/anisul-Islam)  
+- 🔗 [LinkedIn](https://www.linkedin.com/in/anisul2020)  
+- 👍 [Facebook](https://www.facebook.com/studywithanis)  
+- 🌐 [Website](https://www.studywithanis.com/)
 
 ---
 
